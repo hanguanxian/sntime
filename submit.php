@@ -11,9 +11,10 @@ $user->addr = 'asd';
 $user->createdAt = R::isoDateTime();
 R::store($user);*/
 
-$today = date('Y-m-d');
-$result = R::getCell('SELECT COUNT(id) FROM user WHERE DATE(created_at) = ?', [ $today ]);
-echo $result;exit;
 if ($_POST['submit']) {
-    
+    $today = date('Y-m-d');
+    $result = R::getCell('SELECT COUNT(id) FROM user WHERE DATE(created_at) = ?', [ $today ]);
+    if ($result >= 100) {
+        // 到上限了
+    }
 }
