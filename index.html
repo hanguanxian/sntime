@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang='ch'>
+    <head>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='init-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no'>
+        <meta name='description' content='白富美小优妹妹，爱的表白'>
+        <title>爱的表白</title>
+        <link rel='stylesheet' href='css/idangerous.swiper.css' />
+        <style>
+            html, body { padding: 0; }
+            body { margin: 0 auto; max-width: 360px; font-family: '黑体'; }
+            img { border: none; }
+            ul, li { list-style-type: none; margin: 0; padding: 0; }
+            a { text-decoration: none; color: #555; }
+            a[href^='http://tongji.baidu.com'] { display: none; }
+            #container { width: 100%; position: relative; }
+            .swiper-container { width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
+            
+            .swiper-wrapper {
+                -webkit-perspective: 1200px;
+                -moz-perspective: 1200px;
+                -ms-perspective: 1200px;
+                perspective: 1200px;
+            }
+            .swiper-slide-raw {
+                display: none;
+            }
+            .swiper-slide {
+                position: relative;
+                -webkit-transform-style: preserve-3d;
+                -moz-transform-style: preserve-3d;
+                -ms-transform-style: preserve-3d;
+                transform-style: preserve-3d;
+                width: 100%; min-height: 320px;
+                background: transparent url('images/bg.jpg') no-repeat top center;
+                background-size: cover;
+            }
+            .white-stroked { text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff; }
+            .blast {
+              display: inline-block;
+              opacity: 0;
+            }
+            .page1 .content {
+                position: relative; width: 300px; margin: 10px auto 60px;
+                text-align: center;
+            }
+            .page1 .headwrapper { padding-top: 72px; text-align: center; }
+            .page1 .womanhead { width: 141px; }
+            .page1 .title1 { width: 94px; }
+            .page1 .title2 { width: 143px; }
+            .page1 .title3 { width: 75px; }
+            .page1 .title4-wrapper {  position: relative; top: 12px; display: inline-block; width: 1px; overflow-x: hidden; text-align: center; font-size: 0px; }
+            .page1 .title4 { width: 0px; height: 20px; background: transparent url('images/page1/title4.png') no-repeat center center; background-size: 133px 20px; }
+            .page1 .tentacles img { position: absolute; }
+            .page1 .tentacles img:nth-child(1) { width: 80px; top: 48px; left: 32px; }
+            .page1 .tentacles img:nth-child(2) { width: 65px; top: 24px; right: 16px; }
+            .page1 .tentacles img:nth-child(3) { width: 54px; top: 66px; left: 88px; }
+            .page1 .tentacles img:nth-child(4) { width: 55px; top: 66px; right: 96px; }
+            .page1 .tentacles img:nth-child(5) { width: 41px; top: 56px; right: 60px; }
+            .page1 .flower { width: 22px; margin-top: 60px; }
+            .page1 .footerlogo-wrapper, .page9 .footerlogo-wrapper { position: absolute; width: 100%; text-align: center; bottom: 20px; }
+            .page1 .footerlogo, .page9 .footerlogo { width: 144px; }
+            
+            .page2 .header { padding-top: 6px; text-align: center; }
+            .page2 .header img { width: 45px; }
+            .page2 .content { text-align: center; }
+            .page2 .content .titles { opacity: 0; }
+            .page2 .content h3 { font-size: 16px; padding: 0; margin: 3px 0; color: #ED7357; }
+            .page2 .content h2 { font-size: 19px; padding: 0; margin: 3px 0; color: #ED7357; }
+            .page2 .content .portrait { 
+                opacity: 0; width: 111px; margin: 0 auto; 
+                background: transparent url('images/page2/torse.png') no-repeat top center;
+                background-size: cover;
+            }
+            .page2 .content .portrait img { width: 100%; }
+            .page2 .content .notice {
+                position: relative;
+                /*background: transparent url('images/page2/box.png') no-repeat top center; background-size: cover;*/
+                box-sizing: border-box;
+                color: #626262; font-size: 10px; height: 111px; line-height: 1.8; 
+                margin: 0 auto; padding-top: 10px; width: 204px;
+            }
+            .page2 .content .box { position: absolute; width: 204px; left: 0; top: 0; display: none; z-index: 0; }
+            .page2 .notice-text { display: none; position: absolute; top: 8px; left: 4px; z-index: 10; }
+            .page2 .content .details { display: none; font-size: 16px; color: #ec6941; margin-top: 5px; }
+            .page2 .content .notice .question { position: absolute; }
+            .page2 .content .notice .question1 {
+                background: transparent url('images/page2/question1.png') no-repeat top center;
+                background-size: cover;
+                left: -38px; top: 20px;
+                width: 18px; height: 20px; 
+            }
+            .page2 .content .notice .question2 {
+                background: transparent url('images/page2/question2.png') no-repeat top center;
+                background-size: cover;
+                bottom: 32px; left: -30px;
+                width: 10px; height: 15px;
+            }
+            .page2 .content .notice .question3{
+                background: transparent url('images/page2/question3.png') no-repeat top center;
+                background-size: cover;
+                left: 20px; top: 23px; 
+                width: 9px; height: 16px;
+            }
+            .page2 .content .notice .question4{
+                background: transparent url('images/page2/question4.png') no-repeat top center;
+                background-size: cover;
+                right: 22px; top: 37px;
+                width: 12px; height: 15px; 
+            }
+            .page2 .content .notice .question5 {
+                background: transparent url('images/page2/question5.png') no-repeat top center;
+                background-size: cover;
+                right: -20px; top: 4px; 
+                width: 16px; height: 29px; 
+            }
+            .page2 .content .notice .question6 {
+                background: transparent url('images/page2/question6.png') no-repeat top center;
+                background-size: cover;
+                right: -46px; top: 0;
+                width: 10px; height: 20px; 
+            }
+            .page2 .content .notice .question7 {
+                background: transparent url('images/page2/question7.png') no-repeat top center;
+                background-size: cover;
+                right: -34px; top: 40px; 
+                width: 11px; height: 20px; 
+            }
+            .page2 .footer {  position: absolute; bottom: 0; z-index: -1; }
+            .page2 .footer img { width: 100%; display: block; }
+
+            .page3 .header { 
+                display: none; position: relative; 
+                padding-top: 40px; text-align: center; color: #ec6941; 
+                width: 280px; margin: 0 auto;
+            }
+            .page3 { background-image: url('images/page3/bg.jpg'); }
+            .page3 .header h2 { font-size: 17px; left: 107px; margin: 0; position: absolute; top: 38px; }
+            .page3 .header h3 { font-size: 14px; margin: 5px 0; }
+            .page3 .header h4 { font-size: 12px; margin: 0; }
+            .page3 .header img { width: 190px; }
+            .page3 .content .balloon { display: none; position: absolute; text-align: center; font-size: 12px; }
+            .page3 .content .balloon1 { 
+                background: transparent url('images/page3/balloon1v2.png') no-repeat top center;
+                background-size: cover;
+                height: 153px;
+                left: 20px; top: 15px; width: 57px;
+            }
+            .page3 .content .balloon2 { 
+                background: transparent url('images/page3/balloon2.png') no-repeat top center;
+                background-size: cover;
+                bottom: 0;
+                height: 388px;
+                left: 70px; width: 188px; color: #000;
+            }
+            .page3 .content .balloon3 { 
+                background: transparent url('images/page3/balloon3.png') no-repeat top center;
+                background-size: cover;
+                bottom: 0;
+                height: 243px;
+                left: 4px; width: 162px; color: #e92a2f;
+            }
+            .page3 .content .balloon4 { 
+                background: transparent url('images/page3/balloon4.png') no-repeat top center;
+                background-size: cover;
+                bottom: 110px;
+                height: 178px; right: 21px; width: 58px;
+            }
+
+            .page3 .content .balloon2 .advantage { margin: 50px auto 0; width: 180px; font-size: 11px; }
+            .page3 .content .balloon3 .advantage { margin: 40px auto 0; width: 160px; font-size: 11px; }
+            .page3 .content .explain { bottom: 30px; position: absolute; text-align: center; width: 100%; }
+            .page3 .content .explain > img { margin: 0 auto; width: 155px; }
+            .page3 .footer {  position: absolute; bottom: 0; z-index: -1; right: 0; width: 231px; }
+            .page3 .footer img { width: 100%; display: block; }
+
+            .page4 .content { position: relative; margin: 0 auto; width: 300px; }
+            .page4 .content .title { display: none; width: 121px; position: absolute; top: 45px; left: 0; }
+            .page4 .content .title img { width: 100%; }
+            .page4 .content .woman { display: none; width: 220px; position: absolute; top: 10px; right: -30px; }
+            .page4 .content .woman img { width: 100%; }
+            .page4 .content .notice { 
+                position: relative; top: 150px; left: 0; 
+                width: 160px; text-align: center; font-size: 12px; 
+            }
+            .page4 .content .subnotice { display: none; position: relative; }
+            .page4 .content .notice .forest { width: 151px; display: block; }
+            .page4 .content .notice .percent1 { position: absolute; top: -18px; width: 31px; }
+            .page4 .content .notice .percent2 { position: absolute; right: 10px; width: 40px; }
+            .page4 .content .notice .couple { display: block; margin: 10px auto 0; width: 77px; }
+            .page4 .content .butterfly { display: none; width: 81px; position: absolute; top: 260px; right: 60px; }
+            .page4 .content .butterfly img { width: 100%; }
+            .page4 .explain { bottom: 30px; position: absolute; text-align: center; width: 100%; }
+            .page4 .explain > img { margin: 0 auto; width: 246px; }
+
+            .page5 .content { padding-top: 60px; text-align: center; }
+            .page5 .content .imgwrapper { display: none; }
+            .page5 .content .imgwrapper:nth-child(1) img { width: 122px; }
+            .page5 .content .imgwrapper:nth-child(2) img { width: 212px; }
+            .page5 .content .imgwrapper:nth-child(3) img { width: 90px; }
+            .page5 .content .imgwrapper:nth-child(4) img { width: 148px; }
+            .page5 .content .imgwrapper:nth-child(5) img { width: 182px; }
+            .page5 .heart { width: 154px; position: absolute; right: 0px; }
+            .page5 .bottomwrapper {
+                position: absolute; bottom: 10px; width: 100%; text-align: center;
+            }
+            .page5 .bottomwrapper img:nth-child(1) { width: 236px; }
+            .page5 .bottomwrapper img:nth-child(2) { width: 208px; }
+            .page5 .plate { position: relative; top: -8px; left: 4px; }
+            
+            .page6 .titles { display: none; padding-top: 20px; text-align: center; }
+            .page6 .title1 { width: 121px; margin-left: -140px; }
+            .page6 .title2 { width: 154px; }
+            .page6 .p1wrapper { display: none; position: absolute; top: 80px; left: 0; }
+            .page6 .p1wrapper img { width: 297px; }
+            .page6 .p2wrapper { display: none; position: absolute; top: 190px; right: 20px; }
+            .page6 .p2wrapper img { width: 229px; }
+            .page6 .p3wrapper { display: none; position: absolute; top: 288px; right: 0; }
+            .page6 .p3wrapper img { width: 320px; }
+            .page6 .footerwrapper { position:absolute; bottom: 10px; width: 100%; text-align: center; }
+            .page6 .footerwrapper img { width: 204px; }
+            .page8 { background-image: url('images/page8/bg.jpg'); }
+            .page8 .title { position: absolute; top: 0; width: 100%; display: none; }
+            .page8 .content {
+                display: none; text-align: center;
+                font-family: '楷体'; font-size: 12px; color: #634e30;
+                -webkit-transform: rotate(13deg);
+                transform: rotate(13deg);
+                margin: 190px 0 0 90px; line-height: 25px;
+            }
+            .page8 .content h3 { position: absolute; top: -48px; left: 80px; font-size: 18px; line-height: 22px; }
+            .page8 .content .bottom { font-size: 14px; color: #8b077d; }
+            @media only screen and (min-height: 440px) {
+                .page8 .content .bottom { margin-top: 12px; }
+            }
+            .page8 .content .bottom .hi { font-size: 11px; }
+            .page8 .content .lastline { font-size: 14px; color: #d65800; }
+            .page8 .btxt { position: absolute; width: 100%; bottom: 4px; }
+            @media only screen and (max-width: 320px) {
+                .page8 .content { margin: 168px 0 0 80px; line-height: 23px; }
+                .page8 .content h3 { top: -44px; left: 72px; font-size: 16px; }
+                .page8 .content .bottom { line-height: 18px; }
+            }
+            .page7 .title { display: none; width:177px; margin-top: 56px; }
+            .page7 .content {
+                position: relative; margin: 0 auto;
+                width: 288px; height: 483px; text-align: center;
+                background: transparent url('images/page7/content.png') no-repeat top center;
+                background-size: cover;
+            }
+            .page7 .content li { display: none; font-size: 0px; }
+            .page7 .content li img { width: 222px; }
+            
+            .page9 .content { width: 300px; margin: 120px auto; text-align: center; }
+            .page9 .titles { margin-top: 40px; }
+            .page9 .titles img { width: 161px; display: none; }
+            .page9 .footerlogo { display: none; }
+            
+            .pendulum {
+                -webkit-animation: pendulum 2s infinite linear;
+                animation:         pendulum 2s infinite linear;
+                -webkit-animation-direction: alternate;
+                animation-direction: alternate;
+                -webkit-transform-origin: top center;
+                transform-origin: top center;
+            }
+            @-webkit-keyframes pendulum {
+                0% { -webkit-transform: rotate(-15deg); transform: rotate(-15deg); }
+                100% { -webkit-transform: rotate(15deg); transform: rotate(15deg) }
+            }
+            @keyframes pendulum {
+                0% { -webkit-transform: rotate(-15deg); transform: rotate(-15deg); }
+                100% { -webkit-transform: rotate(15deg); transform: rotate(15deg) }
+            }
+            
+            @-webkit-keyframes hover6 {
+                50% { -webkit-transform: translateY(-6px); transform: translateY(-6px); }
+                100% { -webkit-transform: translateY(-12px); transform: translateY(-12px); }
+            }
+            @keyframes hover6 {
+                50% { -webkit-transform: translateY(-6px); transform: translateY(-6px); }
+                100% { -webkit-transform: translateY(-12px); transform: translateY(-12px); }
+            }
+            @-webkit-keyframes hover4 {
+                50% { -webkit-transform: translateY(-4px); transform: translateY(-4px); }
+                100% { -webkit-transform: translateY(-8px); transform: translateY(-8px); }
+            }
+            @keyframes hover4 {
+                50% { -webkit-transform: translateY(-4px); transform: translateY(-4px); }
+                100% { -webkit-transform: translateY(-8px); transform: translateY(-8px); }
+            }
+            @-webkit-keyframes hover2 {
+                50% { -webkit-transform: translateY(-2px); transform: translateY(-2px); }
+                100% { -webkit-transform: translateY(-4px); transform: translateY(-4px); }
+            }
+            @keyframes hover2 {
+                50% { -webkit-transform: translateY(-2px); transform: translateY(-2px); }
+                100% { -webkit-transform: translateY(-4px); transform: translateY(-4px); }
+            }
+            .floating {
+                z-index: 500;
+                -webkit-transition-duration: 0.5s;
+                transition-duration: 0.5s;
+                -webkit-transition-property: transform;
+                transition-property: transform;
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+
+                -webkit-transform: translateY(-12px);
+                transform: translateY(-12px);
+                -webkit-animation-name: hover6;
+                animation-name: hover6;
+                -webkit-animation-duration: 1.5s;
+                animation-duration: 1.5s;
+                -webkit-animation-delay: 0.3s;
+                animation-delay: 0.3s;
+                -webkit-animation-timing-function: linear;
+                animation-timing-function: linear;
+                -webkit-animation-iteration-count: infinite;
+                animation-iteration-count: infinite;
+                -webkit-animation-direction: alternate;
+                animation-direction: alternate;
+            }
+            .floating.f4 {
+                -webkit-transform: translateY(-8px);
+                transform: translateY(-8px);
+                -webkit-animation-name: hover4;
+                animation-name: hover4;
+                -webkit-animation-delay: 0.4s;
+                animation-delay: 0.4s;
+            }
+            .floating.f2 {
+                -webkit-transform: translateY(-4px);
+                transform: translateY(-4px);
+                -webkit-animation-name: hover2;
+                animation-name: hover2;
+                -webkit-animation-delay: 0.5s;
+                animation-delay: 0.5s;
+            }
+            .pointer-arrow { position: absolute; bottom: 2px; left: 150px; width: 37px; height: 33px; }
+            .pointer-arrow img { width: 100%; }
+            
+            @media only screen and (max-height: 420px) {
+                .page1 .headwrapper { padding-top: 30px; }
+                .page2 .header { position: absolute; top: 2px; left: 10px; }
+                .page2 .content { padding-top: 8px; }
+                .page2 h3 { font-size: 14px !important; }
+                .page2 h2 { font-size: 16px !important; }
+                .page3 .balloon2 { top: 100px; }
+                .page3 .balloon3 { top: 220px; }
+                .page3 .balloon4 { top: 160px; }
+                .page4 .content .notice { top: 104px; }
+                .page4 .content .notice .forest { display: inline; width: 100px; }
+                .page4 .content .notice .percent1 { top: -8px; right: 28px; width: 20px; }
+                .page4 .content .notice .percent2 { position: absolute; right: 18px; width: 27px; }
+                .page4 .content .notice .couple { display: block; margin: 10px auto 0; width: 52px; }
+                .page5 .forest { width: 140px !important; }
+                .page6 .p1wrapper { top: 80px; left: 40px; }
+                .page6 .p1wrapper img { width: 198px; }
+                .page6 .p2wrapper { top: 170px; right: 56px; }
+                .page6 .p2wrapper img { width: 168px; }
+                .page6 .p3wrapper { top: 248px; right: 0; }
+                .page6 .p3wrapper img { width: 320px; }
+                .page6 .footerwrapper img { width: 160px; }
+                .page7 .content { width: 248px; background-size: 248px auto; }
+                .page7 .content li img { width: 172px; }
+                .page8 .btxt { bottom: 0px; }
+            }
+            @keyframes pulse {
+                0% {
+                    -webkit-transform: scale3d(1, 1, 1);
+                    transform: scale3d(1, 1, 1);
+                }
+
+                50% {
+                    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+                    transform: scale3d(1.05, 1.05, 1.05);
+                }
+
+                100% {
+                    -webkit-transform: scale3d(1, 1, 1);
+                    transform: scale3d(1, 1, 1);
+                }
+            }
+            @-webkit-keyframes pulse {
+                0% {
+                    -webkit-transform: scale3d(1, 1, 1);
+                    transform: scale3d(1, 1, 1);
+                }
+
+                50% {
+                    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+                    transform: scale3d(1.05, 1.05, 1.05);
+                }
+
+                100% {
+                    -webkit-transform: scale3d(1, 1, 1);
+                    transform: scale3d(1, 1, 1);
+                }
+            }
+            .pulse {
+                -webkit-animation: pulse 2s infinite;
+                animation: pulse 2s infinite;
+            }
+        </style>
+        <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fc3a4024fd0b65f487a424360069f077b' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+    </head>
+    <body>
+        
+        <div id='container'>
+            
+            <div class='swiper-container'>
+                <div class='pointer-arrow floating'><img src='images/arrow.png' /></div>
+                
+                <div class='swiper-wrapper'>
+                    <div class='swiper-slide page1'>
+                        <div class='headwrapper'><img class='womanhead' src='images/page1/womanhead.png' /></div>
+                        <div class='content'>
+                            <div><img class='title1' src='images/page1/title1.png' /></div>
+                            <div><img class='title2' src='images/page1/title2.png' /></div>
+                            <div><img class='title3' src='images/page1/title3.png' /></div>
+                            <div class='title4-wrapper center-expand'><div class='title4'></div></div>
+                            <div class='tentacles'>
+                                <img src='images/page1/tentacle1.png' />
+                                <img src='images/page1/tentacle2.png' />
+                                <img src='images/page1/tentacle3.png' />
+                                <img src='images/page1/tentacle4.png' />
+                                <img src='images/page1/tentacle5.png' />
+                            </div>
+                            <img class='flower' src='images/flower.png' />
+                        </div>
+                        <div class='footerlogo-wrapper'><img class='footerlogo' src='images/logo.png' /></div>
+                    </div>
+
+                    <div class='swiper-slide page2'>
+                        <div class='header'><img class='pulse' src='images/page2/heart.png' /></div>
+                        <div class='content'>
+                            <div class='titles'>
+                                <h3>上周的征婚启事一登出,<br/>小优就收到了好多朋友的来信,<br/>好开心!<br/>憧憬和期待,<br/></h3>
+                                <h2>等待12月23日的到来。</h2>
+                            </div>
+                            <div class="portrait">
+                                <img src="images/page2/womanhead.png" />
+                            </div>
+                            <div class="notice">
+                                <img class='box' src='images/page2/box.png' />
+                                <div class='notice-text'>
+                                信里很多朋友问我,<br/>小优你到底好在哪里?<br/>真的既能照顾家庭又能理财？<br/>
+                                真的是传说中的“出得厅堂,入得厨房”吗？<br/>你的独门理财秘籍又是什么呢？<br/>
+                                </div>
+                                <div class="question-wrapper">
+                                    <div class="question question1 floating"></div>
+                                    <div class="question question2 floating f2"></div>
+                                    <div class="question question3 floating f2"></div>
+                                    <div class="question question4 floating f2"></div>
+                                    <div class="question question5 floating"></div>
+                                    <div class="question question6 floating f4"></div>
+                                    <div class="question question7 floating f4"></div>
+                                </div>
+                            </div>
+                            <div class="details">
+                                看来这次我得更说清楚一些,<br/>仔细听我说哦--
+                            </div>
+                            
+                        </div>
+                        <div class="footer"><img src="images/page2/footer.png" /></div>
+                    </div>
+
+                    <div class='swiper-slide page3'>
+                        <div class='header'>
+                            <img class='heart' src='images/page3/title.png' />
+                            <h2>我是谁？</h2>
+                            <h3>我的全名是太平卓越优享终身年金保险</h3>
+                            <h4>(分红型)</h4>
+                        </div>
+                        <div class='content'>
+                            <div class="balloon balloon1"></div>
+                            <div class="balloon balloon2">
+                                <div class="advantage">
+                                    我是太平人寿众多兄弟姐妹中最<br/>
+                                    特别的哟,因为我不仅外形高贵,<br/>
+                                    内涵更是特别丰富,<br/>
+                                    而且还从一而终,<br/>
+                                    人见人爱。<br/>
+                                    嘻嘻。
+                                </div>
+                            </div>
+                            <div class="balloon balloon3">
+                                <div class="advantage white-stroked">
+                                    当然,你要想娶我,按照习俗<br/>
+                                    一定要给我一份聘礼哟。<br/>
+                                    聘礼的数额你决定就行,<br/>
+                                    小优我贤惠吧?
+                                </div>
+                            </div>
+                            <div class="balloon balloon4"></div>
+                            <div class="explain"><img src="images/page3/explain.png" /></div>
+                        </div>
+                    </div>
+
+                    <div class='swiper-slide page4'>
+                        <div class='content'>
+                            <div class="title">
+                                <img src="images/page4/title.png" />
+                            </div>
+                            <div class="woman"><img src="images/page4/woman.png" /></div>
+                            <div class="notice">
+                                <div class='subnotice'>
+                                    <img class="percent1" src="images/page4/thirtypercent1.png" />
+                                    <img class="forest" src="images/page4/forest.png" />
+                                    <div>你娶我10天后,我就能先给<br/>你财富的30%,用这笔钱我<br/>们可以去蜜月旅行。</div>
+                                </div>
+                                <div class='subnotice'>
+                                    <img class="percent2" src="images/page4/thirtypercent2.png" />
+                                    <img class="couple" src="images/page4/couple.png" />
+                                    以后你我携手的每一年,<br/>我都给你30%作为你的零<br/>花钱犒劳你。
+                                </div>
+                            </div>
+                            <div class="butterfly"><img src="images/page4/butterfly.png" /></div>
+                        </div>
+                        <div class="explain"><img src="images/page4/explain.png" /></div>
+                    </div> 
+
+                    <div class='swiper-slide page5'>
+                        <img class='heart pulse' src='images/page5/heart.png' />
+                        <div class='content'>
+                            <div class='imgwrapper'><img src='images/page5/title1.png' /></div>
+                            <div class='imgwrapper'><img src='images/page5/title2.png' /></div>
+                            <div class='imgwrapper'><img src='images/page5/ornament.png' /></div>
+                            <div class='imgwrapper'><img class='plate pendulum' src='images/page5/boxv3.png' /></div>
+                            <div class='imgwrapper'><img src='images/page5/text.png' /></div>
+                        </div>
+                        <div class='bottomwrapper'>
+                            <img class='forest' src='images/page5/forest.png' />
+                            <img src='images/page5/explain.png' />
+                        </div>
+                    </div>
+                    <div class='swiper-slide page6'>
+                        <div class='content'>
+                            <div class='titles'>
+                                <img class='title1' src="images/page6/title1.png" /><br/>
+                                <img class='title2' src="images/page6/title2.png" />
+                            </div>
+                            <div class="p1wrapper">
+                                <img src="images/page6/p1.png" />
+                            </div>
+                            <div class="p2wrapper">
+                                <img src="images/page6/p2.png" />
+                            </div>
+                            <div class="p3wrapper">
+                                <img src="images/page6/p3.png" />
+                            </div>
+                            <div class="footerwrapper">
+                                <img src="images/page6/explain.png" />
+                            </div>
+                        </div>
+                    </div>                    
+                    <div class='swiper-slide page7'>
+                        <div class='content'>
+                            <img class='title' src='images/page7/title.png' />
+                            <ul>
+                                <li><img src='images/page7/grade1.png' /></li>
+                                <li><img src='images/page7/grade2.png' /></li>
+                                <li><img src='images/page7/grade3.png' /></li>
+                                <li><img src='images/page7/grade4.png' /></li>
+                                <li><img src='images/page7/grade5.png' /></li>
+                                <li><img src='images/page7/grade6.png' /></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class='swiper-slide page8'>
+                        <img class='title' src='images/page8/title.png' />
+                        <div class='content'>
+                            <h3>致卓越优享</h3>
+                            借我优享,还你夕阳下微笑的脸庞;<br/>
+                            借我优享,还你行程路上的无畏和坚强;<br/>
+                            借我优享,还你纵贯盈盈秋水淡淡春风的时光;<br/>
+                            借我优享,还你一段无惧伤痛的彼岸花香;<br/>
+                            借我优享,还你波光里那迷人艳影的荡漾;<br/>
+                            所有这些,只为你,优享这一生的卓越。
+                            <div class='bottom'>
+                                这样的我是不是很令你心动?<br/>
+                                那就记住我的名字<br/>
+                                "太平卓越优享终身年金保险<span class="hi">（分红型）</span>"<br/>
+                                <div class="lastline">12月23日,不见不散,约定今生</div>
+                            </div>
+                        </div>
+                        <img class='btxt' src='images/page8/btxt.png' />
+                    </div>
+                    <div class='swiper-slide page9'>
+                        <div class='content'>
+                            <img class='flower' src='images/flower.png' />
+                            <div class='titles'>
+                                <img src='images/page9/title1.png' />
+                                <img src='images/page9/title2.png' />
+                            </div>
+                        </div>
+                        <div class='footerlogo-wrapper'><img class='footerlogo' src='images/logo.png' /></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src='js/jquery-1.10.1.min.js'></script>
+        <script src='js/velocity.min.js'></script>
+        <script src='js/velocity.ui.min.js'></script>
+        <script src='js/jquery.blast.min.js'></script>
+        <script src='js/idangerous.swiper.min.js'></script>
+        <script src='js/idangerous.swiper.progress.min.js'></script>
+        <script>
+            var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+            var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+            $('#container').css('height', h + 'px');
+            
+            var aniBegin = function(els) {
+                $(els).addClass('animated');
+            };
+            
+            $(function(){
+                $('.title4-wrapper, .title4').velocity({
+                    width: 133
+                }, {
+                    duration: 1000,
+                    delay: 400
+                });
+                //$('.page1 .tentacles').velocity('fadeIn', { delay: 100 });
+                $('.page1 .womanhead').velocity('transition.expandIn');
+                
+                var fadeInTimer;
+                var mySwiper = new Swiper('.swiper-container',{
+                    mode: 'vertical',
+                    progress: true,
+                    longSwipesRatio: 0.1,
+                    // touchRatio: 0.5,
+                    // shortSwipes: false,
+                    onProgressChange: function(swiper){
+                        /*
+                        for (var i = 0; i < swiper.slides.length; i++){
+                            var slide = swiper.slides[i];
+                            var progress = slide.progress;
+
+                            var translate;
+                            if (progress > 0) {
+                                translate = progress*(swiper.height - 200);
+                            } else {
+                                translate = 0; 
+                            }
+                            swiper.setTransform(slide,'translate3d(0, ' + (translate) + 'px,0)');
+                        }*/
+                        /*
+                        for (var i = 0; i < swiper.slides.length; i++){
+                          var slide = swiper.slides[i];
+                          var progress = slide.progress;
+                          var translate, boxShadow;
+                          if (progress>0) {
+                            translate = progress*swiper.height;  
+                            boxShadowOpacity = 0;
+                          }
+                          else {
+                            translate=0; 
+                            boxShadowOpacity = 1  - Math.min(Math.abs(progress),1);
+                          }
+                          slide.style.boxShadow='0px 0px 4px rgba(0,0,0,'+boxShadowOpacity+')';
+                          swiper.setTransform(slide,'translate3d(0,'+(translate)+'px,0)');
+                        }*/
+                        /*//fade
+                        for (var i = 0; i < swiper.slides.length; i++){
+                            var slide = swiper.slides[i];
+                            var progress = slide.progress;
+                            var translate = progress*swiper.height;  
+                            var opacity = 1 - Math.min(Math.abs(progress),1);
+                            slide.style.opacity = opacity;
+                            swiper.setTransform(slide,'translate3d(0, '+translate+'px,0)');
+                        }*/
+                        /*
+                        // android
+                        for (var i = 0; i < swiper.slides.length; i++){
+                          var slide = swiper.slides[i];
+                          var progress = slide.progress;
+                          var scale, translate, opacity;
+                          if (progress<=0) {
+                            opacity = 1 - Math.min(Math.abs(progress),1);
+                            scale = 1 - Math.min(Math.abs(progress/2),1);
+                            translate = progress*swiper.height;  
+                          }
+                          else {
+                            opacity = 1 - Math.min(Math.abs(progress/2),1);
+                            scale=1;
+                            translate=0; 
+                          }
+                          slide.style.opacity = opacity;
+                          swiper.setTransform(slide,'translate3d(0,'+(translate)+'px,0) scale('+scale+')');
+                        }*/
+                    },
+
+                    onSlideChangeEnd: function(swiper){
+                        var index = swiper.activeIndex + 1;
+                        /*if ($('.page' + index).hasClass('viewed')) {
+                            return;
+                        }*/
+                        
+                        $('.animated').removeAttr('style').removeClass('pulse');
+                        
+                        $('.page' + index).addClass('viewed');
+                        if (index == 2) {
+                            $('.page2 .titles').css({opacity: 1});
+                            $('.page2 .titles').blast({
+                                delimiter: "sentence"
+                            }).velocity('transition.fadeIn', {
+                                begin: aniBegin,
+                                duration: 1500,
+                                stagger: 200
+                            });
+                            $('.page2 .portrait').velocity('transition.expandIn', { begin: aniBegin, duration: 1000, delay: 1000 });
+                            
+                            $('.page2 .box').velocity('fadeIn', { begin: aniBegin, delay: 1200 });
+                            
+                            $('.page2 .notice-text').show();
+                            $('.page2 .notice').blast({
+                                delimiter: "sentence"
+                            }).velocity('transition.fadeIn', {
+                                begin: aniBegin,
+                                duration: 2000,
+                                delay: 1000,
+                                stagger: 200
+                            });
+                            $('.page2 .details').show();
+                            $('.page2 .details').blast({
+                                delimiter: "sentence"
+                            }).velocity('transition.fadeIn', {
+                                begin: aniBegin,
+                                duration: 2000,
+                                delay: 1500,
+                                stagger: 200
+                            });
+                        } else if (index == 3) {
+                            $('.page3 .header').velocity('transition.slideDownBigIn', { begin: aniBegin });
+                            $('.page3 .balloon').velocity('transition.slideUpBigIn', {
+                                begin: aniBegin,
+                                duration: 1500,
+                                stagger: 400,
+                                complete: function(){
+                                    $('.page3 .balloon').addClass('pulse');
+                                }
+                            });
+                        } else if (index == 4) {
+                            $('.page4 .title').velocity('fadeIn', { begin: aniBegin });
+                            $('.page4 .woman').velocity('fadeIn', { begin: aniBegin });
+                            $('.page4 .subnotice').velocity('transition.slideLeftIn', { begin: aniBegin, duration: 1200, stagger: 500 });
+                            $('.page4 .butterfly').velocity('transition.slideRightBigIn', { begin: aniBegin, duration: 1200 });
+                        } else if (index == 5) {
+                            //$('.plate').velocity('callout.swing');
+                            $('.imgwrapper').velocity('transition.fadeIn', { begin: aniBegin, duration: 1500, stagger: 100 });
+                        } else if (index == 6) {
+                            $('.page6 .titles').velocity('transition.slideDownIn', { begin: aniBegin });
+                            $('.p1wrapper').velocity('transition.slideLeftIn', {
+                                begin: aniBegin,
+                                duration: 1200,
+                                delay: 500
+                            });
+                            $('.p2wrapper').velocity('transition.slideRightIn', {
+                                begin: aniBegin,
+                                duration: 1200,
+                                delay: 1100
+                            });
+                            $('.p3wrapper').velocity('transition.slideLeftIn', {
+                                begin: aniBegin,
+                                duration: 1200,
+                                delay: 1700
+                            });
+                        } else if (index == 7) {
+                            $('.page7 .title, .page7 li').velocity('transition.slideDownIn', {
+                                begin: aniBegin,
+                                duration: 1000,
+                                stagger: 200
+                            });
+                        } else if (index == 8) {
+                            $('.page8 .title').velocity('transition.slideLeftBigIn', { begin: aniBegin });
+                            $('.page8 .content').show();
+                            $('.page8 .content').blast({
+                                delimiter: "character", // Set the delimiter type (see left)
+                                search: false,
+                                tag: "span",
+                                customClass: ''
+                            }).velocity('transition.fadeIn', {
+                                begin: aniBegin,
+                                duration: 1000,
+                                stagger: 20,
+                                complete: function(){
+                                    $('.lastline').velocity('callout.flash', { delay: 200 });
+                                }
+                            });
+                        } else if (index == 9) {
+                            $('.page9 .titles img:first-child').velocity('transition.slideLeftIn', { begin: aniBegin });
+                            $('.page9 .titles img:last-child').velocity('transition.slideRightIn', { begin: aniBegin });
+                            $('.page9 .footerlogo').velocity('fadeIn', { begin: aniBegin, delay: 500 });
+                        }
+                    },
+                    onTouchStart:function(swiper){
+                        for (var i = 0; i < swiper.slides.length; i++){
+                            swiper.setTransition(swiper.slides[i], 0);
+                        }
+                        if (fadeInTimer) {
+                            window.clearTimeout(fadeInTimer);
+                        }
+                        $('.pointer-arrow').velocity('fadeOut');
+                    },
+                    onTouchEnd: function(swiper) {
+                        if (swiper.activeIndex != swiper.slides.length - 1) {
+                            fadeInTimer = window.setTimeout(function(){
+                                $('.pointer-arrow').velocity('fadeIn');
+                            }, 800);
+                        }
+                    },
+                    onSetWrapperTransition: function(swiper, speed) {
+                        for (var i = 0; i < swiper.slides.length; i++){
+                            swiper.setTransition(swiper.slides[i], speed);
+                        }
+                    }
+                });
+                // Set Z-Indexes
+                for (var i = 0; i < mySwiper.slides.length; i++){
+                    mySwiper.slides[i].style.zIndex = i;
+                }
+            }); // end of dom
+            
+            var lineLink = 'http://neone.com.cn/xiaoyou/index.html';
+            var imgUrl = 'http://kail-common.b0.upaiyun.com/xushare.jpg';
+            var shareTitle = '爱的表白';
+            var descContent = '让我们一起等待12月23日的到来，白富美小优……等你到来';
+            var appid = '';
+
+            function shareFriend() {
+                WeixinJSBridge.invoke('sendAppMessage',{
+                    "appid": appid,
+                    "img_url": imgUrl,
+                    "img_width": "80",
+                    "img_height": "80",
+                    "link": lineLink,
+                    "desc": descContent,
+                    "title": shareTitle
+                }, function(res) {
+                    //_report('send_msg', res.err_msg);
+                })
+            }
+            function shareTimeline() {
+                WeixinJSBridge.invoke('shareTimeline',{
+                    "img_url": imgUrl,
+                    "img_width": "80",
+                    "img_height": "80",
+                    "link": lineLink,
+                    "desc": descContent,
+                    "content": descContent,
+                    "title": descContent
+                }, function(res) {
+                    //_report('timeline', res.err_msg);
+                });
+            }
+            function shareWeibo() {
+                WeixinJSBridge.invoke('shareWeibo',{
+                    "img_url": imgUrl,
+                    "img_width": "80",
+                    "img_height": "80",
+                    "content": descContent,
+                    "title": shareTitle,
+                    "url": lineLink,
+                }, function(res) {
+                    //_report('weibo', res.err_msg);
+                });
+            }
+            // 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
+            document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+                // 发送给好友
+                WeixinJSBridge.on('menu:share:appmessage', function(argv){
+                    shareFriend();
+                });
+                // 分享到朋友圈
+                WeixinJSBridge.on('menu:share:timeline', function(argv){
+                    shareTimeline();
+                });
+                // 分享到微博
+                WeixinJSBridge.on('menu:share:weibo', function(argv){
+                    shareWeibo();
+                });
+            }, false);
+        </script>
+    </body>
+</html>
