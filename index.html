@@ -7,7 +7,7 @@
         <title>时光盛典</title>
         <style>
             html, body { padding: 0; }
-            body { margin: 0 auto; max-width: 480px; font-family: '黑体'; font-size: 0px; }
+            body { margin: 0 auto; max-width: 480px; font-family: '黑体'; font-size: 0px; overflow: hidden; }
             img { border: none; }
             ul, li { list-style-type: none; margin: 0; padding: 0; }
             a { text-decoration: none; color: #555; }
@@ -15,14 +15,21 @@
         </style>
     </head>
     <body>
-        <img style='display: block; width: 100%;' src='web/images/placeholder.jpg' />
+        <div style='position: relative;'>
+            <img style='display: block; width: 100%;' src='web/images/placeholder.jpg' />
+            <img id='box' style='display: block; position: absolute; top: 0px; width: 100%;' src='web/images/boxv2.png' />
+        </div>
+        
         
         <script src='web/js/jquery-1.10.1.min.js'></script>
         <script src='web/js/velocity.min.js'></script>
         <script src='web/js/velocity.ui.min.js'></script>
         <script>
             $(function(){
-                
+                $('#box').velocity('callout.shake');
+                setInterval(function(){
+                    $('#box').velocity('callout.shake');
+                }, 3000);
             });
         </script>
     </body>
