@@ -32,8 +32,8 @@
                 -ms-transform-style: preserve-3d;
                 transform-style: preserve-3d;
                 width: 100%; min-height: 320px;
-                /*background: transparent url('images/bg.jpg') no-repeat top center;
-                background-size: cover;*/
+                background: transparent url('web/images/bg2.jpg') no-repeat top center;
+                background-size: cover;
             }
             .blast {
               display: inline-block;
@@ -78,12 +78,10 @@
                 -webkit-animation: pulse 2s infinite;
                 animation: pulse 2s infinite;
             }
-            .p2text {
-                position: absolute; top: 0px;
-                background: transparent url('web/images/p2-text.png') no-repeat center top;
-                background-size: cover;
+            .title {
+                position: relative; top: 0px;display: block;
                 width: 100%;
-                height: 0;
+                /*display: none;*/
                 overflow: hidden;
             }
             .expand {
@@ -124,12 +122,18 @@
                 {#<div class='pointer-arrow floating'><img src='images/arrow.png' /></div>#}
                 
                 <div class='swiper-wrapper'>
-                    {% for i in 0..7 %}
+                    {% for i in 0..6 %}
                     <div class='swiper-slide page{{ i }}'>
-                        {% if i == 1 %}
-                        <div class='p2text'></div>
-                        {% endif %}
+                        {% if i == 0 %}
                         <img style='width: 100%;' src='web/images/{{ i }}.jpg' />
+                        {% else %}
+                        <img style='width: 100%;' src='web/images/header/{{ i }}.png' />
+                        <img class='title' src='web/images/title/{{ i }}.png' />
+                        {% endif %}
+                        
+                        
+{#                      <img style='width: 100%;' src='web/images/{{ i }}.jpg' />#}
+                        
                     </div>
                     {% endfor %}
                 </div>
@@ -217,15 +221,16 @@
                         $('.animated').removeAttr('style').removeClass('pulse');
                         
                         $('.page' + index).addClass('viewed');
-                        if (index == 2) {
-                            $('.p2text').velocity({
+                        $('.title').velocity('callout.tada');
+                        {#if (index == 2) {
+                            $('.p2-text').velocity({
                                 height: '100%'
                             }, { duration: 3000 });
                         } else if (index == 3) {
                         } else if (index == 4) {
                         } else if (index == 5) {
                         } else if (index == 6) {
-                        }
+                        }#}
                     },
                     onTouchStart:function(swiper){
                         for (var i = 0; i < swiper.slides.length; i++){
