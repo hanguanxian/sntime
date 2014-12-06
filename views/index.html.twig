@@ -108,6 +108,12 @@
                     opacity: 1;
                 }
             }
+            .page0 {
+                background: transparent url('web/images/bg1.jpg') no-repeat top center;
+                background-size: cover; 
+            }
+            .page0 .arrow { width: 31px; margin: 0 auto; }
+            .page0 .arrow img { position: absolute; top: 343px; width: 31px; }
         </style>
         <script type="text/javascript">
         var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
@@ -125,15 +131,14 @@
                     {% for i in 0..6 %}
                     <div class='swiper-slide page{{ i }}'>
                         {% if i == 0 %}
-                        <img style='width: 100%;' src='web/images/{{ i }}.jpg' />
+                        <div class='arrow'>
+                            <img class='pulse' src='web/images/arrow.png' />
+                        </div>
                         {% else %}
                         {#<img style='width: 100%;' src='web/images/header/{{ i }}.png' />#}
                         <img class='title' src='web/images/title/txt.png' />
                         {% endif %}
-                        
-                        
 {#                      <img style='width: 100%;' src='web/images/{{ i }}.jpg' />#}
-                        
                     </div>
                     {% endfor %}
                 </div>
