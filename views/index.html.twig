@@ -120,14 +120,17 @@
             .indexpage .box { display: block; position: absolute; top: 0px; width: 100%; }
             .indexpage .tapopen { display: block; position: absolute; z-index: 10; top: 320px; width: 100%; height: 200px; }
             
-            .page0 .arrow { width: 31px; margin: 0 auto; }
-            .page0 .arrow img { position: absolute; top: 343px; width: 31px; }
-            
-            #demotxt {
-                width: 100%; height: 0px;
-                background: transparent url('web/images/title/p1txt.png') no-repeat top center;
+            .intro-page {
+                background: transparent url('web/images/bg1.jpg') no-repeat top center;
                 background-size: cover;
-                position: absolute; top: 255px;
+            }
+            .intro-page .intro-text-wrapper {
+                position: absolute; top: 160px; text-align: center; width: 100%;
+            }
+            .intro-page .intro-text {
+                display: inline-block; width: 320px; height: 0px;
+                background: transparent url('web/images/introtxt.png') no-repeat top center;
+                background-size: 320px 168px;
             }
             {% for i in 1..6 %}
             .contentpage{{ i }} {
@@ -160,12 +163,20 @@
                 background-size: cover;
             }
             .end-page .btnswrapper { position: absolute; width: 100%; top: 360px; text-align: center; }
-            .btnget { display: inline-block; width: 253px; opacity: 0; }
-            .btnskip { display: inline-block; width: 117px; opacity: 0; }
+            .btnget { display: none; width: 253px; }
+            .btnskip { display: none; width: 117px; }
             .btnget img, .btnskip img { width: 100%; }
             @media all and (min-width: 350px) {
                 .content-text-wrapper {
                     top: 268px !important;
+                }
+            }
+            @media all and (max-height: 420px) {
+                .indexpage { background-position: center -40px; }
+                .indexpage .logo { margin-top: 20px; }
+                .indexpage .box { top: -40px; }
+                .intro-page .intro-text-wrapper {
+                    top: 140px;
                 }
             }
         </style>
@@ -186,8 +197,10 @@
                 <div class='pointer-arrow'><img src='web/images/pullup.png' /></div>
                 
                 <div class='swiper-wrapper'>
-                    <div class='swiper-slide page1'>
-                        <img class='w100content' src='web/images/page1.jpg' />
+                    <div class='swiper-slide intro-page'>
+                        <div class='intro-text-wrapper'>
+                            <div class='intro-text'></div>
+                        </div>                        
                     </div>        
                     
                     {% for i in 1..6 %}
@@ -238,6 +251,10 @@
                 $('.indexpage .tapopen').click(function(e){
                     e.preventDefault();
                     $('.indexpage').velocity('fadeOut');
+                    
+                    $('.intro-page .intro-text').velocity({
+                        height: 168
+                    }, { duration: 1800, delay: 500 });
                 });
                 
                 var fadeInTimer;
@@ -264,7 +281,8 @@
                         // $('.animated').removeAttr('style');
                         
                         $('.page' + index).addClass('viewed');
-                        if (index >= 2 && index <=7 ) {
+                        if (index == 1) {
+                        } if (index >= 2 && index <=7 ) {
                             $('.page' + index + ' .content-text').velocity({
                                 height: 114
                             }, { duration: 1500 });

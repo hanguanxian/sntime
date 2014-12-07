@@ -9,7 +9,7 @@ $user->name = 'kail';
 $user->mobile = '18621586912';
 $user->addr = 'asd';
 $user->createdAt = R::isoDateTime();
-R::store($user);*/
+R::store($user);
 
 if ($_POST['submit']) {
     $today = date('Y-m-d');
@@ -19,5 +19,5 @@ if ($_POST['submit']) {
     }
     // redirect
 }
-
+*/
 render('getbox.html.twig');
