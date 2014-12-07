@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang='ch'>
+    <head>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='init-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no'>
+        <meta name='description' content='时光盛典'>
+        <title>参与时光盛典</title>
+        <style>
+            html, body { padding: 0; }
+            body { margin: 0 auto; max-width: 360px; font-family: '黑体'; }
+            img { border: none; }
+            ul, li { list-style-type: none; margin: 0; padding: 0; }
+            a { text-decoration: none; color: #555; }
+            a[href^='http://tongji.baidu.com'] { display: none; }
+            #container { width: 100%; position: relative; }
+            
+            .participated {
+                position: relative; width: 100%; height: 100%;
+                background: transparent url('web/images/participated.jpg') no-repeat top center;
+                background-size: cover;
+                color: #8E0F16;
+            }
+            .participated .rank {
+                position: absolute; top: 104px; left: 162px; font-size: 28px;
+                width: 100px; text-align: center;
+            }
+            .goshare { position: absolute; bottom: 60px; display: block; width: 100%; text-align: center; }
+            .img-invite { width: 91px; }
+            .goshare:before,  .goshare:after {
+                content: ''; display: block;
+                position: absolute; width: 28px; height: 38px; top: 2px;
+            }
+            .goshare:before {
+                background: transparent url('web/images/theend/rightarrow.png') no-repeat top center;
+                background-size: cover;
+                left: 25%;
+                animation: bounce-left 1.5s infinite;
+                -webkit-animation: bounce-left 1.5s infinite;
+            }
+            .goshare:after {
+                background: transparent url('web/images/theend/leftarrow.png') no-repeat top center;
+                background-size: cover;
+                right: 25%;
+                animation: bounce-right 1.5s infinite;
+                -webkit-animation: bounce-right 1.5s infinite;
+            }
+            .overlay { display: none; position: absolute; z-index: 10; top: 0px; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); }
+            @media all and (max-width: 320px) {
+                .participated .rank { top: 92px; left: 142px; }
+            }
+            @media all and (max-height: 420px) {
+                .participated { background-position: center -40px; }
+                .participated .rank { top: 52px; }
+                .goshare { bottom: 2px; }
+            }
+            
+            @-webkit-keyframes bounce-left {
+                0%, 20%, 53%, 80%, 100% {
+                    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                    -webkit-transform: translate3d(0,0,0);
+                    transform: translate3d(0,0,0);
+                }
+
+                40%, 43% {
+                    -webkit-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    -webkit-transform: translate3d(-10px, 0, 0);
+                    transform: translate3d(-10px, 0, 0);
+                }
+
+                70% {
+                    -webkit-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    -webkit-transform: translate3d(-5px, 0, 0);
+                    transform: translate3d(-5px, 0, 0);
+                }
+
+                90% {
+                    -webkit-transform: translate3d(-1px,0,0);
+                    transform: translate3d(-1px,0,0);
+                }
+            }
+            @keyframes bounce-left {
+                0%, 20%, 53%, 80%, 100% {
+                    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                    -webkit-transform: translate3d(0,0,0);
+                    transform: translate3d(0,0,0);
+                }
+
+                40%, 43% {
+                    -webkit-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    -webkit-transform: translate3d(-10px, 0, 0);
+                    transform: translate3d(-10px, 0, 0);
+                }
+
+                70% {
+                    -webkit-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    -webkit-transform: translate3d(-5px, 0, 0);
+                    transform: translate3d(-5px, 0, 0);
+                }
+
+                90% {
+                    -webkit-transform: translate3d(-1px,0,0);
+                    transform: translate3d(-1px,0,0);
+                }
+            }
+            @-webkit-keyframes bounce-right {
+                0%, 20%, 53%, 80%, 100% {
+                    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                    -webkit-transform: translate3d(0,0,0);
+                    transform: translate3d(0,0,0);
+                }
+
+                40%, 43% {
+                    -webkit-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    -webkit-transform: translate3d(10px, 0, 0);
+                    transform: translate3d(10px, 0, 0);
+                }
+
+                70% {
+                    -webkit-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    -webkit-transform: translate3d(5px, 0, 0);
+                    transform: translate3d(5px, 0, 0);
+                }
+
+                90% {
+                    -webkit-transform: translate3d(1px,0,0);
+                    transform: translate3d(1px,0,0);
+                }
+            }
+            @keyframes bounce-right {
+                0%, 20%, 53%, 80%, 100% {
+                    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                    -webkit-transform: translate3d(0,0,0);
+                    transform: translate3d(0,0,0);
+                }
+
+                40%, 43% {
+                    -webkit-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    -webkit-transform: translate3d(10px, 0, 0);
+                    transform: translate3d(10px, 0, 0);
+                }
+
+                70% {
+                    -webkit-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    -webkit-transform: translate3d(5px, 0, 0);
+                    transform: translate3d(5px, 0, 0);
+                }
+
+                90% {
+                    -webkit-transform: translate3d(1px,0,0);
+                    transform: translate3d(1px,0,0);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div id='container'>
+            <div class='participated'>
+                <div class='rank'>{{ rank }}</div>
+                <a class='goshare' href='#'>
+                    <img class='img-invite' src='web/images/theend/invite.png' />
+                </a>
+            </div>
+            
+            <div class='overlay'>
+                <img style='width: 100%;' src='web/images/share.png' />
+            </div>
+        </div>
+        
+        <script src='web/js/jquery-1.10.1.min.js'></script>
+        <script src='web/js/velocity.min.js'></script>
+        <script>
+            var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+            var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+            $('#container').css('height', h + 'px');
+            
+            $(function(){
+                $('.goshare').click(function(e){
+                    e.preventDefault();
+                    $('.overlay').velocity('fadeIn');
+                    $('.overlay').velocity('fadeOut', { delay: 2000 } );
+                });
+            })
+            
+            var lineLink = 'http://neone.com.cn/sntime';
+            var imgUrl = 'http://kail-common.b0.upaiyun.com/xushare.jpg';
+            var shareTitle = '时光盛典';
+            var descContent = '敬请期待12月8日时光盛典正式开启！';
+            var appid = '';
+
+            function shareFriend() {
+                WeixinJSBridge.invoke('sendAppMessage',{
+                    "appid": appid,
+                    "img_url": imgUrl,
+                    "img_width": "80",
+                    "img_height": "80",
+                    "link": lineLink,
+                    "desc": descContent,
+                    "title": shareTitle
+                }, function(res) {
+                    //_report('send_msg', res.err_msg);
+                })
+            }
+            function shareTimeline() {
+                WeixinJSBridge.invoke('shareTimeline',{
+                    "img_url": imgUrl,
+                    "img_width": "80",
+                    "img_height": "80",
+                    "link": lineLink,
+                    "desc": descContent,
+                    "content": descContent,
+                    "title": descContent
+                }, function(res) {
+                    //_report('timeline', res.err_msg);
+                });
+            }
+            function shareWeibo() {
+                WeixinJSBridge.invoke('shareWeibo',{
+                    "img_url": imgUrl,
+                    "img_width": "80",
+                    "img_height": "80",
+                    "content": descContent,
+                    "title": shareTitle,
+                    "url": lineLink,
+                }, function(res) {
+                    //_report('weibo', res.err_msg);
+                });
+            }
+            // 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
+            document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+                // 发送给好友
+                WeixinJSBridge.on('menu:share:appmessage', function(argv){
+                    shareFriend();
+                });
+                // 分享到朋友圈
+                WeixinJSBridge.on('menu:share:timeline', function(argv){
+                    shareTimeline();
+                });
+                // 分享到微博
+                WeixinJSBridge.on('menu:share:weibo', function(argv){
+                    shareWeibo();
+                });
+            }, false);
+        </script>
+    </body>
+</html>

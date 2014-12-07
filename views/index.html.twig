@@ -42,78 +42,69 @@
                 transform-style: preserve-3d;
                 width: 100%; min-height: 320px;
             }
-            .blast {
-              display: inline-block;
-              opacity: 0;
+            @-webkit-keyframes bounce {
+                0%, 20%, 53%, 80%, 100% {
+                    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                    -webkit-transform: translate3d(0,0,0);
+                    transform: translate3d(0,0,0);
+                }
+
+                40%, 43% {
+                    -webkit-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    -webkit-transform: translate3d(0, -10px, 0);
+                    transform: translate3d(0, -10px, 0);
+                }
+
+                70% {
+                    -webkit-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    -webkit-transform: translate3d(0, -5px, 0);
+                    transform: translate3d(0, -5px, 0);
+                }
+
+                90% {
+                    -webkit-transform: translate3d(0,-1px,0);
+                    transform: translate3d(0,-1px,0);
+                }
             }
-            .pointer-arrow { position: absolute; bottom: 2px; left: 150px; width: 37px; height: 33px; }
+            @keyframes bounce {
+                0%, 20%, 53%, 80%, 100% {
+                    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                    -webkit-transform: translate3d(0,0,0);
+                    transform: translate3d(0,0,0);
+                }
+
+                40%, 43% {
+                    -webkit-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    -webkit-transform: translate3d(0, -10px, 0);
+                    transform: translate3d(0, -10px, 0);
+                }
+
+                70% {
+                    -webkit-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    -webkit-transform: translate3d(0, -5px, 0);
+                    transform: translate3d(0, -5px, 0);
+                }
+
+                90% {
+                    -webkit-transform: translate3d(0,-1px,0);
+                    transform: translate3d(0,-1px,0);
+                }
+            }
+            .pointer-arrow {
+                position: absolute; z-index: 10; bottom: 2px; left: 150px; width: 45px; height: 32px;
+                animation: bounce 1.5s infinite;
+                -webkit-animation: bounce 1.5s infinite;
+            }
             .pointer-arrow img { width: 100%; }
-            
-            @keyframes pulse {
-                0% {
-                    -webkit-transform: scale3d(1, 1, 1);
-                    transform: scale3d(1, 1, 1);
-                }
-
-                50% {
-                    -webkit-transform: scale3d(1.05, 1.05, 1.05);
-                    transform: scale3d(1.05, 1.05, 1.05);
-                }
-
-                100% {
-                    -webkit-transform: scale3d(1, 1, 1);
-                    transform: scale3d(1, 1, 1);
-                }
-            }
-            @-webkit-keyframes pulse {
-                0% {
-                    -webkit-transform: scale3d(1, 1, 1);
-                    transform: scale3d(1, 1, 1);
-                }
-
-                50% {
-                    -webkit-transform: scale3d(1.05, 1.05, 1.05);
-                    transform: scale3d(1.05, 1.05, 1.05);
-                }
-
-                100% {
-                    -webkit-transform: scale3d(1, 1, 1);
-                    transform: scale3d(1, 1, 1);
-                }
-            }
-            .pulse {
-                -webkit-animation: pulse 2s infinite;
-                animation: pulse 2s infinite;
-            }
-            .title {
-                position: relative; top: 0px;display: block;
-                width: 100%;
-                /*display: none;*/
-                overflow: hidden;
-            }
             .expand {
                 -webkit-animation: expand 3s linear;
                 animation: expand 3s linear;
-            }
-            @-webkit-keyframes expand {
-                0% {
-                    height: 0;
-                    opacity: 1;
-                }
-                100% {
-                    height: 100%;
-                    opacity: 1;
-                }
-            }
-            @keyframes expand {
-                0% {
-                    height: 0;
-                    opacity: 1;
-                }
-                100% {
-                    height: 100%;
-                    opacity: 1;
-                }
             }
             .topleaf { display: none; position: absolute; z-index: 10; top: 0px; }
             .topleaf.left {  left: 0px; width: 128px; }
@@ -125,7 +116,7 @@
                 background: transparent url('web/images/indexbg.jpg') no-repeat top center;
                 background-size: cover;
             }
-            .indexpage .logo { width: 180px; height: 180px; margin-top: 40px; }
+            .indexpage .logo { display: none; width: 180px; height: 180px; margin-top: 40px; }
             .indexpage .box { display: block; position: absolute; top: 0px; width: 100%; }
             .indexpage .tapopen { display: block; position: absolute; z-index: 10; top: 320px; width: 100%; height: 200px; }
             
@@ -192,7 +183,7 @@
             </div>
             
             <div class='swiper-container'>
-                {#<div class='pointer-arrow floating'><img src='images/arrow.png' /></div>#}
+                <div class='pointer-arrow'><img src='web/images/pullup.png' /></div>
                 
                 <div class='swiper-wrapper'>
                     <div class='swiper-slide page1'>
@@ -215,8 +206,8 @@
                     
                     <div class='swiper-slide end-page'>
                         <div class='btnswrapper'>
-                            <a class='btnget' href='#'><img src='web/images/form/btnget.png' /></a>
-                            <a class='btnskip' href='#'><img src='web/images/form/btnskip.png' /></a>
+                            <a class='btnget' href='getbox.php'><img src='web/images/form/btnget.png' /></a>
+                            <a class='btnskip' href='participate.php'><img src='web/images/form/btnskip.png' /></a>
                         </div>
                     </div>
                 </div>
@@ -238,6 +229,7 @@
             };
             
             $(function(){
+                $('.indexpage .logo').velocity('transition.expandIn', { duration: 1000, delay: 500 });
                 $('.topleaf.left').velocity('transition.slideLeftIn');
                 $('.topleaf.right').velocity('transition.slideRightIn');
                 setInterval(function(){
@@ -256,35 +248,6 @@
                     // touchRatio: 0.5,
                     // shortSwipes: false,
                     onProgressChange: function(swiper){
-                        /*
-                        for (var i = 0; i < swiper.slides.length; i++){
-                            var slide = swiper.slides[i];
-                            var progress = slide.progress;
-
-                            var translate;
-                            if (progress > 0) {
-                                translate = progress*(swiper.height - 200);
-                            } else {
-                                translate = 0; 
-                            }
-                            swiper.setTransform(slide,'translate3d(0, ' + (translate) + 'px,0)');
-                        }*/
-                        /*
-                        for (var i = 0; i < swiper.slides.length; i++){
-                          var slide = swiper.slides[i];
-                          var progress = slide.progress;
-                          var translate, boxShadow;
-                          if (progress>0) {
-                            translate = progress*swiper.height;  
-                            boxShadowOpacity = 0;
-                          }
-                          else {
-                            translate=0; 
-                            boxShadowOpacity = 1  - Math.min(Math.abs(progress),1);
-                          }
-                          slide.style.boxShadow='0px 0px 4px rgba(0,0,0,'+boxShadowOpacity+')';
-                          swiper.setTransform(slide,'translate3d(0,'+(translate)+'px,0)');
-                        }*/
                         //fade
                         for (var i = 0; i < swiper.slides.length; i++){
                             var slide = swiper.slides[i];
@@ -298,11 +261,7 @@
 
                     onSlideChangeEnd: function(swiper){
                         var index = swiper.activeIndex + 1;
-                        /*if ($('.page' + index).hasClass('viewed')) {
-                            return;
-                        }*/
-                        
-                        $('.animated').removeAttr('style').removeClass('pulse');
+                        // $('.animated').removeAttr('style');
                         
                         $('.page' + index).addClass('viewed');
                         if (index >= 2 && index <=7 ) {
@@ -330,7 +289,7 @@
                         if (swiper.activeIndex != swiper.slides.length - 1) {
                             fadeInTimer = window.setTimeout(function(){
                                 $('.pointer-arrow').velocity('fadeIn');
-                            }, 800);
+                            }, 1500);
                         }
                     },
                     onSetWrapperTransition: function(swiper, speed) {
