@@ -32,8 +32,6 @@
                 -ms-transform-style: preserve-3d;
                 transform-style: preserve-3d;
                 width: 100%; min-height: 320px;
-                background: transparent url('web/images/bg2.jpg') no-repeat top center;
-                background-size: cover;
             }
             .blast {
               display: inline-block;
@@ -108,12 +106,37 @@
                     opacity: 1;
                 }
             }
-            .page0 {
-                background: transparent url('web/images/bg1.jpg') no-repeat top center;
+            .centerwrapper { position: relative; width: 100%; text-align: center; }
+            .page1 {
+                background: transparent url('web/images/indexbg.jpg') no-repeat top center;
                 background-size: cover; 
+            }
+            .page1 .logo {
+                width: 180px; height: 180px; margin-top: 40px;
             }
             .page0 .arrow { width: 31px; margin: 0 auto; }
             .page0 .arrow img { position: absolute; top: 343px; width: 31px; }
+            
+            #demotxt {
+                width: 100%; height: 0px;
+                background: transparent url('web/images/title/p1txt.png') no-repeat top center;
+                background-size: cover;
+                position: absolute; top: 255px;
+            }
+            {% for i in 1..6 %}
+            .contentpage{{ i }} {
+                background: transparent url('web/images/content/p{{ i }}bg.jpg') no-repeat top center;
+                background-size: cover;                
+            }
+            .contentpage{{ i }} .content-text-wrapper {
+                position: absolute; top: 255px; text-align: center; width: 100%;
+            }
+            .contentpage{{ i }} .content-text {
+                display: inline-block; width: 320px; height: 0px;
+                background: transparent url('web/images/content/p{{ i }}txt.png') no-repeat top center;
+                background-size: 320px 114px;
+            }
+            {% endfor %}
         </style>
         <script type="text/javascript">
         var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
@@ -125,20 +148,20 @@
         <div id='container'>
             
             <div class='swiper-container'>
+                <img style='position: absolute; z-index: 10; top: 0px; left: 0px; width: 128px;' src='web/images/topleftleaf.png' />
+                <img style='position: absolute; z-index: 10; top: 0px; right: 0px; width: 165px;' src='web/images/toprightleaf.png' />
                 {#<div class='pointer-arrow floating'><img src='images/arrow.png' /></div>#}
                 
                 <div class='swiper-wrapper'>
-                    {% for i in 0..6 %}
-                    <div class='swiper-slide page{{ i }}'>
-                        {% if i == 0 %}
-                        <div class='arrow'>
-                            <img class='pulse' src='web/images/arrow.png' />
+                    <div class='swiper-slide page1'>
+                        <div class='centerwrapper'><img class='logo' src='web/images/logo.png' /></div>
+                    </div>
+                    
+                    {% for i in 1..6 %}
+                    <div class='swiper-slide page{{ i+1 }} contentpage{{ i }}'>
+                        <div class='content-text-wrapper'>
+                            <div class='content-text'></div>
                         </div>
-                        {% else %}
-                        {#<img style='width: 100%;' src='web/images/header/{{ i }}.png' />#}
-                        <img class='title' src='web/images/title/txt.png' />
-                        {% endif %}
-{#                      <img style='width: 100%;' src='web/images/{{ i }}.jpg' />#}
                     </div>
                     {% endfor %}
                 </div>
@@ -226,16 +249,11 @@
                         $('.animated').removeAttr('style').removeClass('pulse');
                         
                         $('.page' + index).addClass('viewed');
-                        $('.title').velocity('callout.tada');
-                        {#if (index == 2) {
-                            $('.p2-text').velocity({
-                                height: '100%'
-                            }, { duration: 3000 });
-                        } else if (index == 3) {
-                        } else if (index == 4) {
-                        } else if (index == 5) {
-                        } else if (index == 6) {
-                        }#}
+                        if (index >= 2 && index <=7 ) {
+                            $('.page' + index + ' .content-text').velocity({
+                                height: '114px' // @todo 根据计算
+                            }, { duration: 1500 });
+                        }
                     },
                     onTouchStart:function(swiper){
                         for (var i = 0; i < swiper.slides.length; i++){
