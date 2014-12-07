@@ -106,6 +106,10 @@
                     opacity: 1;
                 }
             }
+            .topleaf { display: none; position: absolute; z-index: 10; top: 0px; }
+            .topleaf.left {  left: 0px; width: 128px; }
+            .topleaf.right { right: 0px; width: 165px; }
+            .w100content { width: 100%; }
             .centerwrapper { position: relative; width: 100%; text-align: center; }
             .page1 {
                 background: transparent url('web/images/indexbg.jpg') no-repeat top center;
@@ -136,6 +140,11 @@
                 background: transparent url('web/images/content/p{{ i }}txt.png') no-repeat top center;
                 background-size: 320px 114px;
             }
+            @media all and (min-width: 350px) {
+                .content-text-wrapper {
+                    top: 268px !important;
+                }
+            }
             {% endfor %}
         </style>
         <script type="text/javascript">
@@ -148,8 +157,8 @@
         <div id='container'>
             
             <div class='swiper-container'>
-                <img style='position: absolute; z-index: 10; top: 0px; left: 0px; width: 128px;' src='web/images/topleftleaf.png' />
-                <img style='position: absolute; z-index: 10; top: 0px; right: 0px; width: 165px;' src='web/images/toprightleaf.png' />
+                <img class='topleaf left' src='web/images/topleftleaf.png' />
+                <img class='topleaf right' src='web/images/toprightleaf.png' />
                 {#<div class='pointer-arrow floating'><img src='images/arrow.png' /></div>#}
                 
                 <div class='swiper-wrapper'>
@@ -157,8 +166,12 @@
                         <div class='centerwrapper'><img class='logo' src='web/images/logo.png' /></div>
                     </div>
                     
+                    <div class='swiper-slide page2'>
+                        <img class='w100content' src='web/images/page2.jpg' />
+                    </div>                    
+                    
                     {% for i in 1..6 %}
-                    <div class='swiper-slide page{{ i+1 }} contentpage{{ i }}'>
+                    <div class='swiper-slide page{{ i+2 }} contentpage{{ i }}'>
                         <div class='content-text-wrapper'>
                             <div class='content-text'></div>
                         </div>
@@ -183,14 +196,8 @@
             };
             
             $(function(){
-                $('.title4-wrapper, .title4').velocity({
-                    width: 133
-                }, {
-                    duration: 1000,
-                    delay: 400
-                });
-                //$('.page1 .tentacles').velocity('fadeIn', { delay: 100 });
-                $('.page1 .womanhead').velocity('transition.expandIn');
+                $('.topleaf.left').velocity('transition.slideLeftIn');
+                $('.topleaf.right').velocity('transition.slideRightIn');
                 
                 var fadeInTimer;
                 var mySwiper = new Swiper('.swiper-container',{
@@ -249,7 +256,7 @@
                         $('.animated').removeAttr('style').removeClass('pulse');
                         
                         $('.page' + index).addClass('viewed');
-                        if (index >= 2 && index <=7 ) {
+                        if (index >= 3 && index <=8 ) {
                             $('.page' + index + ' .content-text').velocity({
                                 height: '114px' // @todo 根据计算
                             }, { duration: 1500 });
