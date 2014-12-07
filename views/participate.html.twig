@@ -18,12 +18,12 @@
                 position: relative; width: 100%; height: 100%;
                 background: transparent url('web/images/participate.jpg') no-repeat top center;
                 background-size: cover;
-                color: #8E0F16;
             }
+            .fingerprint { position: absolute; display: inline-block; bottom: 44px; width: 100%; text-align: center; }
+            .img-fingerprint { width: 130px; }
             @media all and (max-height: 420px) {
-                .participated { background-position: center -40px; }
-                .participated .rank { top: 52px; }
-                .goshare { bottom: 2px; }
+                .participate { background-position: center -48px; }
+                .fingerprint { bottom: 0px; }
             }            
         </style>
     </head>
@@ -31,14 +31,9 @@
         
         <div id='container'>
             <div class='participate'>
-                <div class='rank'>{{ rank }}</div>
-                <a class='goshare' href='#'>
-                    <img class='img-invite' src='web/images/theend/invite.png' />
+                <a class='fingerprint' href='participated.php'>
+                    <img class='img-fingerprint' src='web/images/theend/fingerprint.png' />
                 </a>
-            </div>
-            
-            <div class='overlay'>
-                <img style='width: 100%;' src='web/images/share.png' />
             </div>
         </div>
         
@@ -50,11 +45,6 @@
             $('#container').css('height', h + 'px');
             
             $(function(){
-                $('.goshare').click(function(e){
-                    e.preventDefault();
-                    $('.overlay').velocity('fadeIn');
-                    $('.overlay').velocity('fadeOut', { delay: 2000 } );
-                });
             })
             
             var lineLink = 'http://neone.com.cn/sntime';
