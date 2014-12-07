@@ -8,7 +8,7 @@
         <link rel='stylesheet' href='web/css/idangerous.swiper.css' />
         <style>
             html, body { padding: 0; }
-            body { margin: 0 auto; max-width: 360px; font-family: '黑体'; overflow: hidden; }
+            body { margin: 0 auto; max-width: 480px; font-family: '黑体'; overflow: hidden; }
             img { border: none; }
             ul, li { list-style-type: none; margin: 0; padding: 0; }
             a { text-decoration: none; color: #555; }
@@ -146,6 +146,30 @@
                 background-size: 320px 114px;
             }
             {% endfor %}
+            .contentpage1 .toy:nth-child(1) { bottom:0px; right:102px; width: 59px; }
+            .contentpage1 .toy:nth-child(2) { bottom:30px; right:57px; width: 68px; }
+            .contentpage1 .toy:nth-child(3) { bottom:31px; right:14px; width: 48px; }
+            
+            .contentpage2 .toy:nth-child(1) { bottom:10px; right:108px; width: 72px; }
+            .contentpage2 .toy:nth-child(2) { bottom:64px; right:72px; width: 40px; }
+            .contentpage2 .toy:nth-child(3) { bottom:10px; right:18px; width: 67px; }
+            
+            .contentpage3 .toy:nth-child(1) { bottom:10px; right:128px; width: 68px; }
+            .contentpage3 .toy:nth-child(2) { bottom:20px; right:55px; width: 72px; }
+            .contentpage3 .toy:nth-child(3) { bottom:24px; right:6px; width: 38px; }
+            
+            .contentpage4 .toy:nth-child(1) { bottom:12px; right:60px; width: 72px; }
+            .contentpage4 .toy:nth-child(2) { bottom:12px; right:102px; width: 79px; }
+            .contentpage4 .toy:nth-child(3) { bottom:70px; right:32px; width: 45px; }
+            
+            .contentpage5 .toy:nth-child(1) { bottom:10px; right:110px; width: 104px; }
+            .contentpage5 .toy:nth-child(2) { bottom:60px; right:58px; width: 51px; }
+            .contentpage5 .toy:nth-child(3) { bottom:26px; right:30px; width: 62px; }
+            
+            .contentpage6 .toy:nth-child(1) { bottom:29px; right:148px; width: 54px; }
+            .contentpage6 .toy:nth-child(2) { bottom:52px; right:90px; width: 49px; }
+            .contentpage6 .toy:nth-child(3) { bottom:10px; right:38px; width: 71px; }
+            
             .summary-page {
                 background: transparent url('web/images/summarybg.jpg') no-repeat top center;
                 background-size: cover;                
@@ -167,12 +191,13 @@
             .btnskip { display: none; width: 117px; }
             .btnget img, .btnskip img { width: 100%; }
             
-            .toys-wrapper { position: absolute; z-index: 1; top: 440px; width: 100%; height: 100px; }
-            .toys-wrapper .toy { position: absolute; }
+            .toys-wrapper { position: absolute; z-index: 1; top: 440px; width: 100%; height: 90px; }
+            .toys-wrapper .toy { position: absolute; display: none; }
             @media all and (min-width: 350px) {
-                .content-text-wrapper {
-                    top: 268px !important;
-                }
+                .content-text-wrapper { top: 268px !important; }
+            }
+            @media all and (max-width: 330px) {
+                .toys-wrapper { top:388px; }
             }
             @media all and (max-height: 420px) {
                 .indexpage { background-position: center -40px; }
@@ -183,6 +208,10 @@
                 .contentpage{{ i }} { background-position: center -38px; }
                 .contentpage{{ i }} .content-text-wrapper { top: 205px; }
                 {% endfor %}
+                .toys-wrapper { top: 350px; }
+                .summary-page .summary-text-wrapper { top: 152px; }
+                .end-page { background-position: center -30px; }
+                .end-page .btnswrapper { top: 300px; }
             }
         </style>
     </head>
@@ -215,29 +244,29 @@
                         </div>
                         <div class='toys-wrapper'>
                             {% if i == 1 %}
-                            <img class='toy' style='bottom:0px; right:102px; width: 59px;' src="web/images/toys/{{ i }}1.png">
-                            <img class='toy' style='bottom:30px; right:57px; width: 68px;' src="web/images/toys/{{ i }}2.png">
-                            <img class='toy' style='bottom:31px; right:14px; width: 48px;' src="web/images/toys/{{ i }}3.png">
+                            <img class='toy' src="web/images/toys/{{ i }}1.png">
+                            <img class='toy' src="web/images/toys/{{ i }}2.png">
+                            <img class='toy' src="web/images/toys/{{ i }}3.png">
                             {% elseif i == 2 %}
-                            <img class='toy' style='bottom:10px; right:102px; width: 72px;' src="web/images/toys/{{ i }}1.png">
-                            <img class='toy' style='bottom:70px; right:72px; width: 40px;' src="web/images/toys/{{ i }}2.png">
-                            <img class='toy' style='bottom:21px; right:13px; width: 67px;' src="web/images/toys/{{ i }}3.png">
+                            <img class='toy' src="web/images/toys/{{ i }}1.png">
+                            <img class='toy' src="web/images/toys/{{ i }}2.png">
+                            <img class='toy' src="web/images/toys/{{ i }}3.png">
                             {% elseif i == 3 %}
-                            <img class='toy' style='bottom:10px; right:128px; width: 68px;' src="web/images/toys/{{ i }}1.png">
-                            <img class='toy' style='bottom:20px; right:55px; width: 72px;' src="web/images/toys/{{ i }}2.png">
-                            <img class='toy' style='bottom:34px; right:6px; width: 38px;' src="web/images/toys/{{ i }}3.png">
+                            <img class='toy' src="web/images/toys/{{ i }}1.png">
+                            <img class='toy' src="web/images/toys/{{ i }}2.png">
+                            <img class='toy' src="web/images/toys/{{ i }}3.png">
                             {% elseif i == 4 %}
-                            <img class='toy' style='bottom:12px; right:60px; width: 72px;' src="web/images/toys/{{ i }}2.png">
-                            <img class='toy' style='bottom:12px; right:102px; width: 79px;' src="web/images/toys/{{ i }}1.png">
-                            <img class='toy' style='bottom:70px; right:32px; width: 45px;' src="web/images/toys/{{ i }}3.png">
+                            <img class='toy' src="web/images/toys/{{ i }}2.png">
+                            <img class='toy' src="web/images/toys/{{ i }}1.png">
+                            <img class='toy' src="web/images/toys/{{ i }}3.png">
                             {% elseif i == 5 %}
-                            <img class='toy' style='bottom:10px; right:110px; width: 104px;' src="web/images/toys/{{ i }}1.png">
-                            <img class='toy' style='bottom:60px; right:58px; width: 51px;' src="web/images/toys/{{ i }}2.png">
-                            <img class='toy' style='bottom:26px; right:30px; width: 62px;' src="web/images/toys/{{ i }}3.png">
+                            <img class='toy' src="web/images/toys/{{ i }}1.png">
+                            <img class='toy' src="web/images/toys/{{ i }}2.png">
+                            <img class='toy' src="web/images/toys/{{ i }}3.png">
                             {% elseif i == 6 %}
-                            <img class='toy' style='bottom:29px; right:148px; width: 54px;' src="web/images/toys/{{ i }}1.png">
-                            <img class='toy' style='bottom:48px; right:78px; width: 49px;' src="web/images/toys/{{ i }}2.png">
-                            <img class='toy' style='bottom:20px; right:32px; width: 71px;' src="web/images/toys/{{ i }}3.png">
+                            <img class='toy' src="web/images/toys/{{ i }}1.png">
+                            <img class='toy' src="web/images/toys/{{ i }}2.png">
+                            <img class='toy' src="web/images/toys/{{ i }}3.png">
                             {% endif %}
                         </div>
                     </div>
@@ -318,6 +347,7 @@
                             $('.page' + index + ' .content-text').velocity({
                                 height: 114
                             }, { duration: 1500 });
+                            $('.page' + index + ' .toy').velocity('transition.bounceUpIn', { stagger: 100 });
                         } else if (index == 8) {
                             $('.summary-text').velocity({
                                 height: 160
