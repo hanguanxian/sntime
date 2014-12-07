@@ -43,7 +43,7 @@
         
         <div id='container'>
             <div class='participate'>
-                <a class='fingerprint unselectable' href='participated.php'>
+                <a class='fingerprint unselectable' href='javascript:;'>
                     <img class='img-fingerprint unselectable' src='web/images/theend/fingerprint.png' />
                 </a>
             </div>
@@ -60,8 +60,7 @@
             $(function(){
                 $.Finger.pressDuration = 2000;
                 $('body').on('press', '.fingerprint', function(e){
-                    alert('x');
-                    
+                    window.location.href = 'participated.php';
                     e.preventDefault();
                 });
             })
