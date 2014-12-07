@@ -148,18 +148,18 @@
                     transform: translate3d(1px,0,0);
                 }
             }
-            .goshare:before,  .goshare:after {
-                content: ''; display: block;
+            .goshare .before,  .goshare .after {
+                display: block;
                 position: absolute; width: 28px; height: 38px; top: 2px;
             }
-            .goshare:before {
+            .goshare .before {
                 background: transparent url('web/images/theend/rightarrow.png') no-repeat top center;
                 background-size: cover;
                 left: 25%;
                 animation: bounce-left 1.5s infinite;
                 -webkit-animation: bounce-left 1.5s infinite;
             }
-            .goshare:after {
+            .goshare .after {
                 background: transparent url('web/images/theend/leftarrow.png') no-repeat top center;
                 background-size: cover;
                 right: 25%;
@@ -174,7 +174,9 @@
             <div class='participated'>
                 <div class='rank'>{{ rank }}</div>
                 <a class='goshare' href='#'>
+                    <span class='before'></span>
                     <img class='img-invite' src='web/images/theend/invite.png' />
+                    <span class='after'></span>
                 </a>
             </div>
             
