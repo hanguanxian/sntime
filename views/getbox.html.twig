@@ -21,7 +21,7 @@
                 background-size: cover; box-sizing: border-box;
                 padding-top: 260px; text-align: center;
             }
-            .form input { position: absolute; border: none; text-align: center; padding: 4px 0; background: transparent; }
+            .form input { position: absolute; border: none; text-align: center; box-sizing: border-box; padding: 2px 0; background: transparent; -webkit-appearance: none; }
             .form input[name="name"] { top: 22px; left: 104px; width: 110px; }
             .form input[name="mobile"] { top: 80px; left: 102px; width: 114px; }
             .form input[name="addr"] { top: 136px; left: 66px; width: 190px; }
@@ -36,6 +36,9 @@
                 background: transparent url('web/images/form/btnsubmit.png') no-repeat top center;
                 background-size: cover;
             }
+            @media all and (max-width: 320px) {
+                .form { padding-top: 220px; background-position: center -16px; }
+            }            
             @media all and (max-height: 420px) {
                 .form { padding-top: 192px; background-position: center -36px; }
             }
