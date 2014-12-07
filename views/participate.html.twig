@@ -14,6 +14,15 @@
             a[href^='http://tongji.baidu.com'] { display: none; }
             #container { width: 100%; position: relative; }
             
+            .unselectable {
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                -o-user-select: none;
+                user-select: none;
+            }
             .participate {
                 position: relative; width: 100%; height: 100%;
                 background: transparent url('web/images/participate.jpg') no-repeat top center;
@@ -34,13 +43,14 @@
         
         <div id='container'>
             <div class='participate'>
-                <a class='fingerprint' href='participated.php'>
-                    <img class='img-fingerprint' src='web/images/theend/fingerprint.png' />
+                <a class='fingerprint unselectable' href='participated.php'>
+                    <img class='img-fingerprint unselectable' src='web/images/theend/fingerprint.png' />
                 </a>
             </div>
         </div>
         
         <script src='web/js/jquery-1.10.1.min.js'></script>
+        <script src='web/js/jquery.finger.min.js'></script>
         <script src='web/js/velocity.min.js'></script>
         <script>
             var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
@@ -48,6 +58,12 @@
             $('#container').css('height', h + 'px');
             
             $(function(){
+                $.Finger.pressDuration = 2000;
+                $('body').on('press', '.fingerprint', function(e){
+                    alert('x');
+                    
+                    e.preventDefault();
+                });
             })
             
             var lineLink = 'http://neone.com.cn/sntime';
