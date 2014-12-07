@@ -5,7 +5,6 @@
         <meta name='viewport' content='init-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no'>
         <meta name='description' content='时光盛典'>
         <title>领取时光快递盒</title>
-        <link rel="stylesheet" href="web/css/sweet-alert.css" />
         <style>
             html, body { padding: 0; }
             body { margin: 0 auto; max-width: 360px; font-family: '黑体'; }
@@ -14,41 +13,29 @@
             a { text-decoration: none; color: #555; }
             a[href^='http://tongji.baidu.com'] { display: none; }
             #container { width: 100%; position: relative; }
-            button { -webkit-appearance: none; background: none; padding: 0; outline-style:none; border: none; font-size: 0px; }
-            .form {
+            
+            .formresult {
                 position: relative; width: 100%; height: 100%;
-                background: transparent url('web/images/formbg.jpg') no-repeat top center;
-                background-size: cover; box-sizing: border-box;
-                padding-top: 260px; text-align: center;
+                background: transparent url('web/images/formresult.jpg') no-repeat top center;
+                background-size: cover; box-sizing: border-box; text-align: center;
             }
-            .form input { position: absolute; border: none; text-align: center; padding: 4px 0; }
-            .form input[name="name"] { top: 22px; left: 104px; width: 110px; }
-            .form input[name="mobile"] { top: 80px; left: 102px; width: 114px; }
-            .form input[name="addr"] { top: 136px; left: 66px; width: 190px; }
-            form {
-                position: relative;
-                width: 320px; height: 164px; text-align: center; margin: 0 auto;
-                background: transparent url('web/images/form.png') no-repeat top center;
-                background-size: cover;
+            .formresult .img-result {
+                position: absolute; top: 0px; left: 0px; width: 100%;
             }
-            .btnsubmit {
-                position: absolute; bottom: -60px; width: 117px; height: 49px; left: 102px;
-                background: transparent url('web/images/form/btnsubmit.png') no-repeat top center;
-                background-size: cover;
-            }
+            .btnok { display: inline-block; position: relative; top: 430px; width: 117px; height: 49px; }
+            .btnok img { width: 100%; }
         </style>
     </head>
     <body>
         
         <div id='container'>
-            <div class='form'>
-                <form action='getbox.php' method='POST'>
-                    <input type='text' id="name" name='name' />
-                    <input type='tel' id="phone" name='mobile' />
-                    <input type='text' id="addr" name='addr' />
-                    
-                    <button class='btnsubmit' type='submit' name="submit" value="1"></button>
-                </form>
+            <div class='formresult'>
+                {% if r == 1 %}
+                <img class='img-result' src='web/images/formre-ok.png' />
+                {% elseif r== 2 %}
+                <img class='img-result' src='web/images/formre-sorry.png' />
+                {% endif %}
+                <a class='btnok' href='participate.php'><img src='web/images/form/btnok.png' /></a>
             </div>
         </div>
         
