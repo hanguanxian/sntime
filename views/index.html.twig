@@ -167,7 +167,7 @@
             .btnskip { display: none; width: 117px; }
             .btnget img, .btnskip img { width: 100%; }
             
-            .toys-wrapper {position: absolute; bottom: 0; width: 100%; }
+            .toys-wrapper { position: absolute;bottom: 0; width: 100%; }
             .toys-wrapper .toys { margin: 0 auto; position: relative; width: 300px; }
             .toys-wrapper .toys .toy { position: absolute; }
             @media all and (min-width: 350px) {
@@ -212,34 +212,35 @@
                         <div class='content-text-wrapper'>
                             <div class='content-text'></div>
                         </div>
+{#                        <div style='height:96%; width: 100%; '></div>#}
                         <div class='toys-wrapper'>
-                        <div class='toys'>
-                            {% if i == 1 %}
-                            <img class='toy' style='bottom:72px; right:102px; width: 59px;' src="web/images/toys/{{ i }}1.png">
-                            <img class='toy' style='bottom:97px; right:57px; width: 68px;' src="web/images/toys/{{ i }}2.png">
-                            <img class='toy' style='bottom:103px; right:14px; width: 48px;' src="web/images/toys/{{ i }}3.png">
-                            {% elseif i == 2 %}
-                            <img class='toy' style='bottom:72px; right:102px; width: 72px;' src="web/images/toys/{{ i }}1.png">
-                            <img class='toy' style='bottom:112px; right:65px; width: 40px;' src="web/images/toys/{{ i }}2.png">
-                            <img class='toy' style='bottom:73px; right:13px; width: 67px;' src="web/images/toys/{{ i }}3.png">
-                            {% elseif i == 3 %}
-                            <img class='toy' style='bottom:80px; right:122px; width: 68px;' src="web/images/toys/{{ i }}1.png">
-                            <img class='toy' style='bottom:90px; right:55px; width: 72px;' src="web/images/toys/{{ i }}2.png">
-                            <img class='toy' style='bottom:88px; right:0; width: 38px;' src="web/images/toys/{{ i }}3.png">
-                            {% elseif i == 4 %}
-                            <img class='toy' style='bottom:72px; right:102px; width: 79px;' src="web/images/toys/{{ i }}1.png">
-                            <img class='toy' style='bottom:97px; right:45px; width: 72px;' src="web/images/toys/{{ i }}2.png">
-                            <img class='toy' style='bottom:133px; right:2px; width: 45px;' src="web/images/toys/{{ i }}3.png">
-                            {% elseif i == 5 %}
-                            <img class='toy' style='bottom:72px; right:87px; width: 104px;' src="web/images/toys/{{ i }}1.png">
-                            <img class='toy' style='bottom:132px; right:58px; width: 51px;' src="web/images/toys/{{ i }}2.png">
-                            <img class='toy' style='bottom:91px; right:33px; width: 62px;' src="web/images/toys/{{ i }}3.png">
-                            {% elseif i == 6 %}
-                            <img class='toy' style='bottom:91px; right:130px; width: 54px;' src="web/images/toys/{{ i }}1.png">
-                            <img class='toy' style='bottom:120px; right:72px; width: 49px;' src="web/images/toys/{{ i }}2.png">
-                            <img class='toy' style='bottom:82px; right:18px; width: 71px;' src="web/images/toys/{{ i }}3.png">
-                            {% endif %}
-                        </div>
+                            <div class='toys'>
+                                {% if i == 1 %}
+                                <img class='toy' style='bottom:72px; right:102px; width: 59px;' src="web/images/toys/{{ i }}1.png">
+                                <img class='toy' style='bottom:97px; right:57px; width: 68px;' src="web/images/toys/{{ i }}2.png">
+                                <img class='toy' style='bottom:103px; right:14px; width: 48px;' src="web/images/toys/{{ i }}3.png">
+                                {% elseif i == 2 %}
+                                <img class='toy' style='bottom:72px; right:102px; width: 72px;' src="web/images/toys/{{ i }}1.png">
+                                <img class='toy' style='bottom:112px; right:65px; width: 40px;' src="web/images/toys/{{ i }}2.png">
+                                <img class='toy' style='bottom:73px; right:13px; width: 67px;' src="web/images/toys/{{ i }}3.png">
+                                {% elseif i == 3 %}
+                                <img class='toy' style='bottom:80px; right:122px; width: 68px;' src="web/images/toys/{{ i }}1.png">
+                                <img class='toy' style='bottom:90px; right:55px; width: 72px;' src="web/images/toys/{{ i }}2.png">
+                                <img class='toy' style='bottom:88px; right:0; width: 38px;' src="web/images/toys/{{ i }}3.png">
+                                {% elseif i == 4 %}
+                                <img class='toy' style='bottom:72px; right:102px; width: 79px;' src="web/images/toys/{{ i }}1.png">
+                                <img class='toy' style='bottom:97px; right:45px; width: 72px;' src="web/images/toys/{{ i }}2.png">
+                                <img class='toy' style='bottom:133px; right:2px; width: 45px;' src="web/images/toys/{{ i }}3.png">
+                                {% elseif i == 5 %}
+                                <img class='toy' style='bottom:72px; right:87px; width: 104px;' src="web/images/toys/{{ i }}1.png">
+                                <img class='toy' style='bottom:132px; right:58px; width: 51px;' src="web/images/toys/{{ i }}2.png">
+                                <img class='toy' style='bottom:91px; right:33px; width: 62px;' src="web/images/toys/{{ i }}3.png">
+                                {% elseif i == 6 %}
+                                <img class='toy' style='bottom:91px; right:130px; width: 54px;' src="web/images/toys/{{ i }}1.png">
+                                <img class='toy' style='bottom:120px; right:72px; width: 49px;' src="web/images/toys/{{ i }}2.png">
+                                <img class='toy' style='bottom:82px; right:18px; width: 71px;' src="web/images/toys/{{ i }}3.png">
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                     {% endfor %}
