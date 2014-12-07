@@ -15,7 +15,7 @@
             #container { width: 100%; position: relative; }
             
             .unselectable {
-                -webkit-touch-callout: none;
+                -webkit-touch-callout: none !important;
                 -webkit-user-select: none;
                 -khtml-user-select: none;
                 -moz-user-select: none;
@@ -42,7 +42,7 @@
     <body>
         
         <div id='container'>
-            <div class='participate'>
+            <div class='participate unselectable'>
                 <a class='fingerprint unselectable' href='javascript:;'>
                     <img class='img-fingerprint unselectable' src='web/images/theend/fingerprint.png' />
                 </a>
