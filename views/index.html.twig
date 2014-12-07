@@ -96,8 +96,9 @@
                     transform: translate3d(0,-1px,0);
                 }
             }
+            .arrow-wrapper { position: absolute; width: 100%; bottom: 2px; text-align: center; z-index: 10; }
             .pointer-arrow {
-                position: absolute; z-index: 10; bottom: 2px; left: 150px; width: 45px; height: 32px;
+                display: inline-block; width: 45px; height: 32px; margin: 0 auto;
                 animation: bounce 1.5s infinite;
                 -webkit-animation: bounce 1.5s infinite;
             }
@@ -232,7 +233,9 @@
             </div>
             
             <div class='swiper-container'>
-                <div class='pointer-arrow'><img src='web/images/pullup.png' /></div>
+                <div class='arrow-wrapper'>
+                    <div class='pointer-arrow'><img src='web/images/pullup.png' /></div>
+                </div>
                 
                 <div class='swiper-wrapper'>
                     <div class='swiper-slide intro-page'>
