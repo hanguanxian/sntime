@@ -26,24 +26,6 @@
             }
             .goshare { position: absolute; bottom: 60px; display: block; width: 100%; text-align: center; }
             .img-invite { width: 91px; }
-            .goshare:before,  .goshare:after {
-                content: ''; display: block;
-                position: absolute; width: 28px; height: 38px; top: 2px;
-            }
-            .goshare:before {
-                background: transparent url('web/images/theend/rightarrow.png') no-repeat top center;
-                background-size: cover;
-                left: 25%;
-                animation: bounce-left 1.5s infinite;
-                -webkit-animation: bounce-left 1.5s infinite;
-            }
-            .goshare:after {
-                background: transparent url('web/images/theend/leftarrow.png') no-repeat top center;
-                background-size: cover;
-                right: 25%;
-                animation: bounce-right 1.5s infinite;
-                -webkit-animation: bounce-right 1.5s infinite;
-            }
             .overlay { display: none; position: absolute; z-index: 10; top: 0px; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); }
             @media all and (max-width: 320px) {
                 .participated .rank { top: 92px; left: 142px; }
@@ -165,6 +147,24 @@
                     -webkit-transform: translate3d(1px,0,0);
                     transform: translate3d(1px,0,0);
                 }
+            }
+            .goshare:before,  .goshare:after {
+                content: ''; display: block;
+                position: absolute; width: 28px; height: 38px; top: 2px;
+            }
+            .goshare:before {
+                background: transparent url('web/images/theend/rightarrow.png') no-repeat top center;
+                background-size: cover;
+                left: 25%;
+                animation: bounce-left 1.5s infinite;
+                -webkit-animation: bounce-left 1.5s infinite;
+            }
+            .goshare:after {
+                background: transparent url('web/images/theend/leftarrow.png') no-repeat top center;
+                background-size: cover;
+                right: 25%;
+                animation: bounce-right 1.5s infinite;
+                -webkit-animation: bounce-right 1.5s infinite;
             }
         </style>
     </head>
