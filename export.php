@@ -1,5 +1,9 @@
 <?php
 
+if ($_GET['secret'] != 'suning') {
+    die('illegal access');
+}
+
 require 'utils.php';
 initRedbean();
 require_once 'lib/PHPExcel.php';
