@@ -1,6 +1,6 @@
 <?php
 
-define('LOCAL', 1);
+define('LOCAL', 0);
 define('DEV', 1);
 define('APP_KEY', 'wxa85c8c3343fea40d');
 define('APP_SECRET', 'dafc7c3d74ddddbbe1bf81e65a3938c2');
@@ -11,7 +11,7 @@ function initRedbean() {
     if (LOCAL) {
         R::setup('mysql:host=localhost;dbname=sntime;charset=utf8;encoding:utf8', 'root', '');
     } else {
-        R::setup('mysql:host=localhost;dbname=sntime;charset=utf8;encoding:utf8', 'root', '');
+        R::setup('mysql:host=localhost;dbname=sntime;charset=utf8;encoding:utf8', 'root', '123456');
     }
 }
 
