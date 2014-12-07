@@ -24,6 +24,11 @@
             }
             .btnok { display: inline-block; position: relative; top: 430px; width: 117px; height: 49px; }
             .btnok img { width: 100%; }
+            @media all and (max-height: 420px) {
+                .formresult { background-position: center -36px; }
+                .formresult .img-result { top: -36px; }
+                .btnok { top: 340px; }
+            }
         </style>
     </head>
     <body>
@@ -40,7 +45,6 @@
         </div>
         
         <script src='web/js/jquery-1.10.1.min.js'></script>
-        <script type='text/javascript' src='web/js/sweet-alert.min.js'></script>
         <script>
             var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
             var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
