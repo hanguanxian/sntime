@@ -60,7 +60,7 @@
             $('#container').css('height', h + 'px');
             
             $(function(){
-                $.Finger.pressDuration = 1000;
+                $.Finger.pressDuration = 500;
                 $('body').on('press', '.fingerprint', function(e){
                     window.location.href = 'participated.php';
                     e.preventDefault();
