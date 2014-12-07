@@ -1,6 +1,6 @@
 <?php
 
-define('LOCAL', 0);
+define('LOCAL', 1);
 define('DEV', 1);
 define('APP_KEY', 'wxa85c8c3343fea40d');
 define('APP_SECRET', 'dafc7c3d74ddddbbe1bf81e65a3938c2');
