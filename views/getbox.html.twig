@@ -107,10 +107,26 @@
                 });
             });
             
+            function onBridgeReady(){
+                WeixinJSBridge.call('showOptionMenu');
+                WeixinJSBridge.call('hideToolbar');
+            }
+
+            if (typeof WeixinJSBridge == "undefined"){
+                if( document.addEventListener ){
+                    document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                }else if (document.attachEvent){
+                    document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
+                    document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                }
+            }else{
+                onBridgeReady();
+            }
+            
             var lineLink = 'http://neone.com.cn/sntime';
-            var imgUrl = 'http://kail-common.b0.upaiyun.com/xushare.jpg';
-            var shareTitle = '时光盛典';
-            var descContent = '敬请期待12月8日时光盛典正式开启！';
+            var imgUrl = 'http://kail-common.b0.upaiyun.com/sntimeshare.jpg';
+            var shareTitle = '2014苏宁易购时光盛典邀请函';
+            var descContent = '2014苏宁易购时光盛典，一起来开启时光记忆！';
             var appid = '';
 
             function shareFriend() {
