@@ -35,19 +35,19 @@
     </head>
     <body>
         
+        <div style="display:none;">
+            <audio id="sfx-bgm" preload="auto" loop="loop">
+                <source src="web/audio/bgm.mp3" type="audio/mpeg">
+                <source src="web/audio/bgm.ogg" type="audio/ogg">
+            </audio>
+        </div>
+        
         <div id='container'>
             <a id='btnsound' class='play' href='javascript:;'>
                 <img class='img-play' src='web/images/btnsoundplay.png' />
                 <img class='img-pause' src='web/images/btnsoundpause.png' />
             </a>
             <iframe src='index.php'></iframe>
-        </div>
-        
-        <div style="display:none;">
-            <audio id="sfx-bgm" preload="auto" loop="loop">
-                <source src="web/audio/bgm.mp3" type="audio/mpeg">
-                <source src="web/audio/bgm.ogg" type="audio/ogg">
-            </audio>
         </div>
         
         <script src='web/js/jquery-1.10.1.min.js'></script>
