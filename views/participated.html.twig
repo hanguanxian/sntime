@@ -200,7 +200,7 @@
                     $('.overlay').velocity('fadeOut', { delay: 2000 } );
                 });
                 
-                window.parent.postMessage("{'msg': 'rank', 'rank':{{ rank }}");
+                window.parent.postMessage("{'msg': 'rank', 'rank': {{ rank }}", 'http://neone.com.cn/');
             })
         </script>
     </body>
