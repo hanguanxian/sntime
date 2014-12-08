@@ -218,11 +218,20 @@
                 .end-page { background-position: center -30px; }
                 .end-page .btnswrapper { top: 300px; }
             }
+            #btnsound { display: none; width: 27px; height: 27px; position: absolute; top: 20px; right: 20px; z-index: 12; border: none; }
+            #btnsound img { width: 100%; }
+            #btnsound .img-pause { display: none; }
+            #btnsound.play .img-pause { display: block; }
+            #btnsound.play .img-play { display: none; }
         </style>
     </head>
     <body>
         
         <div id='container'>
+            <a id='btnsound' class='play' href='javascript:;'>
+                <img class='img-play' src='web/images/btnsoundplay.png' />
+                <img class='img-pause' src='web/images/btnsoundpause.png' />
+            </a>
             <img class='unselectable topleaf left' src='web/images/topleftleaf.png' />
             <img class='unselectable topleaf right' src='web/images/toprightleaf.png' />
 
@@ -295,6 +304,13 @@
             </div>
         </div>
         
+        <div style="display:none;">
+            <audio id="sfx-bgm" preload="auto" loop="loop">
+                <source src="web/audio/bgm.mp3" type="audio/mpeg">
+                <source src="web/audio/bgm.ogg" type="audio/ogg">
+            </audio>
+        </div>
+        
         <script src='web/js/jquery-1.10.1.min.js'></script>
         <script src='web/js/velocity.min.js'></script>
         <script src='web/js/velocity.ui.min.js'></script>
@@ -310,6 +326,15 @@
             };
             
             $(function(){
+                $('#btnsound').click(function(e){
+                    $(this).toggleClass('play');
+                    if ($(this).hasClass('play')) {
+                        document.getElementById('sfx-bgm').play();
+                    } else {
+                        document.getElementById('sfx-bgm').pause();
+                    }
+                });
+                
                 $('.indexpage .logo').velocity('transition.expandIn', { duration: 1000, delay: 500 });
                 $('.topleaf.left').velocity('transition.slideLeftIn');
                 $('.topleaf.right').velocity('transition.slideRightIn');
@@ -320,6 +345,8 @@
                     e.preventDefault();
                     $('.indexpage').velocity('fadeOut');
                     
+                    document.getElementById('sfx-bgm').play();
+                    $('#btnsound').show();
                     $('.intro-page .intro-text').velocity({
                         height: 168
                     }, { duration: 1800, delay: 500 });
