@@ -58,11 +58,9 @@
             
             $(function(){
                 window.addEventListener('message', function(event) {
-                    if (event.data.message == 'playbgm') {
+                    if (event.data == 'playbgm') {
                         $('#btnsound').show();
-                        setTimeout(function(){
-                            document.getElementById('sfx-bgm').play();
-                        }, 200);
+                        document.getElementById('sfx-bgm').play();
                     }
                 }, false);
                 
