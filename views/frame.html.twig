@@ -60,7 +60,9 @@
                 window.addEventListener('message', function(event) {
                     if (event.data.message == 'playbgm') {
                         $('#btnsound').show();
-                        document.getElementById('sfx-bgm').play();
+                        setTimeout(function(){
+                            document.getElementById('sfx-bgm').play();
+                        }, 200);
                     }
                 }, false);
                 
