@@ -86,6 +86,13 @@
             var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
             $('#container, iframe').css('height', h + 'px');
             
+            var descContent = '2014苏宁易购时光盛典，一起来开启时光记忆！';
+            window.addEventListener('message', function(event) {
+                if (event.data.msg == 'rank') {
+                    descContent = '2014苏宁易购时光盛典，我是第' + event.data.rank + '位参与者，一起来开启时光记忆！';
+                }
+            }, false);
+            
             $(function(){
                 $('.indexpage .logo').velocity('transition.expandIn', { duration: 1000, delay: 500 });
                 $('.topleaf.left').velocity('transition.slideLeftIn');
@@ -133,7 +140,6 @@
             var lineLink = 'http://neone.com.cn/sntime';
             var imgUrl = 'http://kail-common.b0.upaiyun.com/sntimeshare.jpg';
             var shareTitle = '2014苏宁易购时光盛典邀请函';
-            var descContent = '2014苏宁易购时光盛典，一起来开启时光记忆！';
             var appid = '';
 
             function shareFriend() {
