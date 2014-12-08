@@ -107,19 +107,8 @@
                 -webkit-animation: expand 3s linear;
                 animation: expand 3s linear;
             }
-            .topleaf { display: none; position: absolute; z-index: 10; top: 0px; }
-            .topleaf.left {  left: 0px; width: 128px; }
-            .topleaf.right { right: 0px; width: 165px; }
             .w100content { width: 100%; }
             .centerwrapper { position: relative; width: 100%; text-align: center; }
-            .indexpage {
-                position: absolute; width: 100%; height: 100%; z-index: 5;
-                background: transparent url('web/images/indexbg.jpg') no-repeat top center;
-                background-size: cover;
-            }
-            .indexpage .logo { display: none; width: 180px; height: 180px; margin-top: 40px; }
-            .indexpage .box { display: block; position: absolute; top: 0px; width: 100%; }
-            .indexpage .tapopen { display: block; position: absolute; z-index: 10; top: 320px; width: 100%; height: 200px; }
             
             .intro-page {
                 background: transparent url('web/images/bg1.jpg') no-repeat top center;
@@ -205,9 +194,6 @@
                 .toys-wrapper { top:388px; }
             }
             @media all and (max-height: 420px) {
-                .indexpage { background-position: center -40px; }
-                .indexpage .logo { margin-top: 20px; }
-                .indexpage .box { top: -56px; }
                 .intro-page .intro-text-wrapper { top: 140px; }
                 {% for i in 1..6 %}
                 .contentpage{{ i }} { background-position: center -38px; }
@@ -218,31 +204,11 @@
                 .end-page { background-position: center -30px; }
                 .end-page .btnswrapper { top: 300px; }
             }
-            #btnsound { display: none; width: 27px; height: 27px; position: absolute; top: 20px; right: 20px; z-index: 12; border: none; }
-            #btnsound img { width: 100%; }
-            #btnsound .img-pause { display: none; }
-            #btnsound.play .img-pause { display: block; }
-            #btnsound.play .img-play { display: none; }
         </style>
     </head>
     <body>
         
         <div id='container'>
-            {#
-            <a id='btnsound' class='play' href='javascript:;'>
-                <img class='img-play' src='web/images/btnsoundplay.png' />
-                <img class='img-pause' src='web/images/btnsoundpause.png' />
-            </a>
-            #}
-            <img class='unselectable topleaf left' src='web/images/topleftleaf.png' />
-            <img class='unselectable topleaf right' src='web/images/toprightleaf.png' />
-
-            <div class='indexpage'>
-                <div class='centerwrapper'><img class='logo' src='web/images/logo.png' /></div>
-                <img class='box unselectable' src='web/images/boxv2.png' />
-                <a class='tapopen unselectable' href='#'></a>
-            </div>
-            
             <div class='swiper-container'>
                 <div class='arrow-wrapper'>
                     <div class='pointer-arrow'><img src='web/images/pullup.png' /></div>
@@ -305,14 +271,7 @@
                 </div>
             </div>
         </div>
-        {#
-        <div style="display:none;">
-            <audio id="sfx-bgm" preload="auto" loop="loop">
-                <source src="web/audio/bgm.mp3" type="audio/mpeg">
-                <source src="web/audio/bgm.ogg" type="audio/ogg">
-            </audio>
-        </div>
-        #}
+        
         <script src='web/js/jquery-1.10.1.min.js'></script>
         <script src='web/js/velocity.min.js'></script>
         <script src='web/js/velocity.ui.min.js'></script>
@@ -327,35 +286,15 @@
                 $(els).addClass('animated');
             };
             
-            $(function(){
-                {#
-                $('#btnsound').click(function(e){
-                    $(this).toggleClass('play');
-                    if ($(this).hasClass('play')) {
-                        document.getElementById('sfx-bgm').play();
-                    } else {
-                        document.getElementById('sfx-bgm').pause();
-                    }
-                });
-                #}
-                $('.indexpage .logo').velocity('transition.expandIn', { duration: 1000, delay: 500 });
-                $('.topleaf.left').velocity('transition.slideLeftIn');
-                $('.topleaf.right').velocity('transition.slideRightIn');
-                setInterval(function(){
-                    $('.indexpage .box').velocity('callout.shake');
-                }, 3000);
-                $('.indexpage .tapopen').click(function(e){
-                    e.preventDefault();
-                    $('.indexpage').velocity('fadeOut');
-                    
-                    window.parent.postMessage('playbgm', 'http://neone.com.cn/');
-                    
-                    //document.getElementById('sfx-bgm').play();
-                    //$('#btnsound').show();
+            window.addEventListener('message', function(event) {
+                if (event.data == 'start') {
                     $('.intro-page .intro-text').velocity({
                         height: 168
                     }, { duration: 1800, delay: 500 });
-                });
+                }
+            }, false);
+            
+            $(function(){
                 
                 var fadeInTimer;
                 var mySwiper = new Swiper('.swiper-container',{

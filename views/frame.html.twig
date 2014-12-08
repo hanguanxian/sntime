@@ -25,12 +25,30 @@
                 -o-user-select: none;
                 user-select: none;
             }
+            .centerwrapper { position: relative; width: 100%; text-align: center; }
             #btnsound { display: none; width: 27px; height: 27px; position: absolute; top: 20px; right: 20px; z-index: 12; border: none; }
             #btnsound img { width: 100%; }
             #btnsound .img-pause { display: none; }
             #btnsound.play .img-pause { display: block; }
             #btnsound.play .img-play { display: none; }
             iframe { width: 100%; height: 100%; border: none; padding: 0; margin: 0; }
+            
+            .indexpage {
+                position: absolute; width: 100%; height: 100%; z-index: 5;
+                background: transparent url('web/images/indexbg.jpg') no-repeat top center;
+                background-size: cover;
+            }
+            .indexpage .logo { display: none; width: 180px; height: 180px; margin-top: 40px; }
+            .indexpage .box { display: block; position: absolute; top: 0px; width: 100%; }
+            .indexpage .tapopen { display: block; position: absolute; z-index: 10; top: 320px; width: 100%; height: 200px; }
+            .topleaf { display: none; position: absolute; z-index: 10; top: 0px; }
+            .topleaf.left {  left: 0px; width: 128px; }
+            .topleaf.right { right: 0px; width: 165px; }
+            @media all and (max-height: 420px) {
+                .indexpage { background-position: center -40px; }
+                .indexpage .logo { margin-top: 20px; }
+                .indexpage .box { top: -56px; }
+            }
         </style>
     </head>
     <body>
@@ -47,22 +65,44 @@
                 <img class='img-play' src='web/images/btnsoundplay.png' />
                 <img class='img-pause' src='web/images/btnsoundpause.png' />
             </a>
-            <iframe src='index.php'></iframe>
+            
+            <img class='unselectable topleaf left' src='web/images/topleftleaf.png' />
+            <img class='unselectable topleaf right' src='web/images/toprightleaf.png' />
+            
+            <div class='indexpage'>
+                <div class='centerwrapper'><img class='logo' src='web/images/logo.png' /></div>
+                <img class='box unselectable' src='web/images/boxv2.png' />
+                <a class='tapopen unselectable' href='#'></a>
+            </div>
+            
+            <iframe id='appfr' src='index.php'></iframe>
         </div>
         
         <script src='web/js/jquery-1.10.1.min.js'></script>
+        <script src='web/js/velocity.min.js'></script>
+        <script src='web/js/velocity.ui.min.js'></script>        
         <script>
             var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
             var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-            $('#container').css('height', h + 'px');
+            $('#container, iframe').css('height', h + 'px');
             
             $(function(){
-                window.addEventListener('message', function(event) {
-                    if (event.data == 'playbgm') {
-                        $('#btnsound').show();
-                        document.getElementById('sfx-bgm').play();
-                    }
-                }, false);
+                $('.indexpage .logo').velocity('transition.expandIn', { duration: 1000, delay: 500 });
+                $('.topleaf.left').velocity('transition.slideLeftIn');
+                $('.topleaf.right').velocity('transition.slideRightIn');
+                setInterval(function(){
+                    $('.indexpage .box').velocity('callout.shake');
+                }, 3000);                
+                $('.indexpage .tapopen').click(function(e){
+                    e.preventDefault();
+                    
+                    $('.indexpage').velocity('fadeOut');
+                    var frame = document.getElementById('appfr').contentWindow;
+                    frame.postMessage('start', 'http://localhost/');
+                    
+                    document.getElementById('sfx-bgm').play();
+                    $('#btnsound').show();
+                });
                 
                 $('#btnsound').click(function(e){
                     $(this).toggleClass('play');
