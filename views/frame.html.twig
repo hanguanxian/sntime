@@ -40,8 +40,7 @@
                 <img class='img-play' src='web/images/btnsoundplay.png' />
                 <img class='img-pause' src='web/images/btnsoundpause.png' />
             </a>
-            <iframe src='index.php'>
-            </iframe>
+            <iframe src='index.php'></iframe>
         </div>
         
         <div style="display:none;">
@@ -57,14 +56,14 @@
             var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
             $('#container').css('height', h + 'px');
             
-            window.addEventListener('message', function(event) {
-                if (event.data.message == 'playbgm') {
-                    $('#btnsound').show();
-                    document.getElementById('sfx-bgm').play();
-                }
-            }, false);
-            
             $(function(){
+                window.addEventListener('message', function(event) {
+                    if (event.data.message == 'playbgm') {
+                        $('#btnsound').show();
+                        document.getElementById('sfx-bgm').play();
+                    }
+                }, false);
+                
                 $('#btnsound').click(function(e){
                     $(this).toggleClass('play');
                     if ($(this).hasClass('play')) {
