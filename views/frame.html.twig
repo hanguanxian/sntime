@@ -88,8 +88,10 @@
             
             var descContent = '2014苏宁易购时光盛典，一起来开启时光记忆！';
             window.addEventListener('message', function(event) {
-                if (event.data.msg == 'rank') {
-                    descContent = '2014苏宁易购时光盛典，我是第' + event.data.rank + '位参与者，一起来开启时光记忆！';
+                var rankArr = event.data.split('-');
+                
+                if (rankArr[0] == 'rank') {
+                    descContent = '2014苏宁易购时光盛典，我是第' + rank[1] + '位参与者，一起来开启时光记忆！';
                 }
             }, false);
             
