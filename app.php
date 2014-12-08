@@ -2,4 +2,4 @@
 
 require 'utils.php';
 
-render('frame.html.twig');
+render('app.html.twig');

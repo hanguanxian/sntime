@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang='ch'>
+    <head>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='init-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no'>
+        <meta name='description' content='时光盛典'>
+        <title>时光盛典邀请函</title>
+        <link rel='stylesheet' href='web/css/idangerous.swiper.css' />
+        <style>
+            html, body { padding: 0; }
+            body { margin: 0 auto; max-width: 480px; font-family: '黑体'; overflow: hidden; }
+            img { border: none; }
+            ul, li { list-style-type: none; margin: 0; padding: 0; }
+            a { text-decoration: none; color: #555; }
+            a[href^='http://tongji.baidu.com'] { display: none; }
+            #container { width: 100%; position: relative; overflow: hidden; }
+            .swiper-container { width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
+            
+            .unselectable {
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                -o-user-select: none;
+                user-select: none;
+            }
+            .swiper-wrapper {
+                -webkit-perspective: 1200px;
+                -moz-perspective: 1200px;
+                -ms-perspective: 1200px;
+                perspective: 1200px;
+            }
+            .swiper-slide-raw {
+                display: none;
+            }
+            .swiper-slide {
+                position: relative;
+                -webkit-transform-style: preserve-3d;
+                -moz-transform-style: preserve-3d;
+                -ms-transform-style: preserve-3d;
+                transform-style: preserve-3d;
+                width: 100%; min-height: 320px;
+            }
+            @-webkit-keyframes bounce {
+                0%, 20%, 53%, 80%, 100% {
+                    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                    -webkit-transform: translate3d(0,0,0);
+                    transform: translate3d(0,0,0);
+                }
+
+                40%, 43% {
+                    -webkit-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    -webkit-transform: translate3d(0, -10px, 0);
+                    transform: translate3d(0, -10px, 0);
+                }
+
+                70% {
+                    -webkit-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    -webkit-transform: translate3d(0, -5px, 0);
+                    transform: translate3d(0, -5px, 0);
+                }
+
+                90% {
+                    -webkit-transform: translate3d(0,-1px,0);
+                    transform: translate3d(0,-1px,0);
+                }
+            }
+            @keyframes bounce {
+                0%, 20%, 53%, 80%, 100% {
+                    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                    -webkit-transform: translate3d(0,0,0);
+                    transform: translate3d(0,0,0);
+                }
+
+                40%, 43% {
+                    -webkit-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    -webkit-transform: translate3d(0, -10px, 0);
+                    transform: translate3d(0, -10px, 0);
+                }
+
+                70% {
+                    -webkit-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                    -webkit-transform: translate3d(0, -5px, 0);
+                    transform: translate3d(0, -5px, 0);
+                }
+
+                90% {
+                    -webkit-transform: translate3d(0,-1px,0);
+                    transform: translate3d(0,-1px,0);
+                }
+            }
+            .arrow-wrapper { position: absolute; width: 100%; bottom: 2px; text-align: center; z-index: 10; }
+            .pointer-arrow {
+                display: inline-block; width: 45px; height: 32px; margin: 0 auto;
+                animation: bounce 1.5s infinite;
+                -webkit-animation: bounce 1.5s infinite;
+            }
+            .pointer-arrow img { width: 100%; }
+            .expand {
+                -webkit-animation: expand 3s linear;
+                animation: expand 3s linear;
+            }
+            .w100content { width: 100%; }
+            .centerwrapper { position: relative; width: 100%; text-align: center; }
+            
+            .intro-page {
+                background: transparent url('web/images/bg1.jpg') no-repeat top center;
+                background-size: cover;
+            }
+            .intro-page .intro-text-wrapper {
+                position: absolute; top: 160px; text-align: center; width: 100%;
+            }
+            .intro-page .intro-text {
+                display: inline-block; width: 320px; height: 0px;
+                background: transparent url('web/images/introtxt.png') no-repeat top center;
+                background-size: 320px 168px;
+            }
+            {% for i in 1..6 %}
+            .contentpage{{ i }} {
+                background: transparent url('web/images/content/p{{ i }}bg.jpg') no-repeat top center;
+                background-size: cover;                
+            }
+            .contentpage{{ i }} .content-text-wrapper {
+                position: absolute; top: 250px; text-align: center; width: 100%; z-index: 20;
+            }
+            .contentpage{{ i }} .content-text {
+                display: inline-block; width: 320px; height: 0px;
+                background: transparent url('web/images/content/p{{ i }}txt.png') no-repeat top center;
+                background-size: 320px 114px;
+            }
+            {% endfor %}
+            .contentpage1 .toy:nth-child(1) { bottom:0px; right:102px; width: 59px; }
+            .contentpage1 .toy:nth-child(2) { bottom:30px; right:57px; width: 68px; }
+            .contentpage1 .toy:nth-child(3) { bottom:31px; right:14px; width: 48px; }
+            
+            .contentpage2 .toy:nth-child(1) { bottom:10px; right:108px; width: 72px; }
+            .contentpage2 .toy:nth-child(2) { bottom:64px; right:72px; width: 40px; }
+            .contentpage2 .toy:nth-child(3) { bottom:10px; right:18px; width: 67px; }
+            
+            .contentpage3 .toy:nth-child(1) { bottom:10px; right:128px; width: 68px; }
+            .contentpage3 .toy:nth-child(2) { bottom:20px; right:55px; width: 72px; }
+            .contentpage3 .toy:nth-child(3) { bottom:24px; right:6px; width: 38px; }
+            
+            .contentpage4 .toy:nth-child(1) { bottom:12px; right:60px; width: 72px; }
+            .contentpage4 .toy:nth-child(2) { bottom:12px; right:102px; width: 79px; }
+            .contentpage4 .toy:nth-child(3) { bottom:70px; right:32px; width: 45px; }
+            
+            .contentpage5 .toy:nth-child(1) { bottom:10px; right:110px; width: 104px; }
+            .contentpage5 .toy:nth-child(2) { bottom:60px; right:58px; width: 51px; }
+            .contentpage5 .toy:nth-child(3) { bottom:26px; right:30px; width: 62px; }
+            
+            .contentpage6 .toy:nth-child(1) { bottom:29px; right:148px; width: 54px; }
+            .contentpage6 .toy:nth-child(2) { bottom:52px; right:90px; width: 49px; }
+            .contentpage6 .toy:nth-child(3) { bottom:10px; right:38px; width: 71px; }
+            
+            .summary-page {
+                background: transparent url('web/images/summarybg.jpg') no-repeat top center;
+                background-size: cover;                
+            }
+            .summary-page .summary-text-wrapper {
+                position: absolute; top: 220px; text-align: center; width: 100%;
+            }
+            .summary-page .summary-text {
+                display: inline-block; width: 320px; height: 0px;
+                background: transparent url('web/images/summarytext.png') no-repeat top center;
+                background-size: 320px 160px;
+            }
+            .end-page {
+                background: transparent url('web/images/getorskip.jpg') no-repeat top center;
+                background-size: cover;
+            }
+            .end-page .btnswrapper { position: absolute; width: 100%; top: 360px; text-align: center; }
+            .btnget { display: none; width: 253px; }
+            .btnskip { display: none; width: 117px; }
+            .btnget img, .btnskip img { width: 100%; }
+            
+            .toys-wrapper { position: absolute; z-index: 1; top: 440px; width: 100%; height: 90px; }
+            .toys-wrapper .toy { position: absolute; display: none; }
+            @media all and (min-width: 350px) {
+                .content-text-wrapper { top: 272px !important; }
+            }
+            @media all and (min-width: 370px) {
+                .content-text-wrapper { top: 280px !important; }
+                .toys-wrapper { top: 460px; }
+            }
+            @media all and (max-width: 330px) {
+                .toys-wrapper { top:388px; }
+            }
+            @media all and (max-height: 420px) {
+                .intro-page .intro-text-wrapper { top: 140px; }
+                {% for i in 1..6 %}
+                .contentpage{{ i }} { background-position: center -38px; }
+                .contentpage{{ i }} .content-text-wrapper { top: 205px; }
+                {% endfor %}
+                .toys-wrapper { top: 350px; }
+                .summary-page .summary-text-wrapper { top: 152px; }
+                .end-page { background-position: center -30px; }
+                .end-page .btnswrapper { top: 300px; }
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div id='container'>
+            <div class='swiper-container'>
+                <div class='arrow-wrapper'>
+                    <div class='pointer-arrow'><img src='web/images/pullup.png' /></div>
+                </div>
+                
+                <div class='swiper-wrapper'>
+                    <div class='swiper-slide intro-page'>
+                        <div class='intro-text-wrapper'>
+                            <div class='intro-text'></div>
+                        </div>
+                    </div>
+                    
+                    {% for i in 1..6 %}
+                    <div class='swiper-slide page{{ i+1 }} contentpage{{ i }}'>
+                        <div class='content-text-wrapper'>
+                            <div class='content-text'></div>
+                        </div>
+                        <div class='toys-wrapper'>
+                            {% if i == 1 %}
+                            <img class='toy' src="web/images/toys/{{ i }}1.png">
+                            <img class='toy' src="web/images/toys/{{ i }}2.png">
+                            <img class='toy' src="web/images/toys/{{ i }}3.png">
+                            {% elseif i == 2 %}
+                            <img class='toy' src="web/images/toys/{{ i }}1.png">
+                            <img class='toy' src="web/images/toys/{{ i }}2.png">
+                            <img class='toy' src="web/images/toys/{{ i }}3.png">
+                            {% elseif i == 3 %}
+                            <img class='toy' src="web/images/toys/{{ i }}1.png">
+                            <img class='toy' src="web/images/toys/{{ i }}2.png">
+                            <img class='toy' src="web/images/toys/{{ i }}3.png">
+                            {% elseif i == 4 %}
+                            <img class='toy' src="web/images/toys/{{ i }}2.png">
+                            <img class='toy' src="web/images/toys/{{ i }}1.png">
+                            <img class='toy' src="web/images/toys/{{ i }}3.png">
+                            {% elseif i == 5 %}
+                            <img class='toy' src="web/images/toys/{{ i }}1.png">
+                            <img class='toy' src="web/images/toys/{{ i }}2.png">
+                            <img class='toy' src="web/images/toys/{{ i }}3.png">
+                            {% elseif i == 6 %}
+                            <img class='toy' src="web/images/toys/{{ i }}1.png">
+                            <img class='toy' src="web/images/toys/{{ i }}2.png">
+                            <img class='toy' src="web/images/toys/{{ i }}3.png">
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                    
+                    <div class='swiper-slide summary-page'>
+                        <div class='summary-text-wrapper'>
+                            <div class='summary-text'></div>
+                        </div>
+                    </div>
+                    
+                    <div class='swiper-slide end-page'>
+                        <div class='btnswrapper'>
+                            <a class='btnget' href='getbox.php'><img src='web/images/form/btnget.png' /></a><br/>
+                            <a class='btnskip' href='participate.php'><img src='web/images/form/btnskip.png' /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src='web/js/jquery-1.10.1.min.js'></script>
+        <script src='web/js/velocity.min.js'></script>
+        <script src='web/js/velocity.ui.min.js'></script>
+        <script src='web/js/idangerous.swiper.min.js'></script>
+        <script src='web/js/idangerous.swiper.progress.min.js'></script>
+        <script>
+            var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+            var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+            $('#container').css('height', h + 'px');
+            
+            var aniBegin = function(els) {
+                $(els).addClass('animated');
+            };
+            
+            window.addEventListener('message', function(event) {
+                if (event.data == 'start') {
+                    $('.intro-page .intro-text').velocity({
+                        height: 168
+                    }, { duration: 1800, delay: 500 });
+                }
+            }, false);
+            
+            $(function(){
+                
+                var fadeInTimer;
+                var mySwiper = new Swiper('.swiper-container',{
+                    mode: 'vertical',
+                    progress: true,
+                    longSwipesRatio: 0.1,
+                    // touchRatio: 0.5,
+                    // shortSwipes: false,
+                    onProgressChange: function(swiper){
+                        //fade
+                        for (var i = 0; i < swiper.slides.length; i++){
+                            var slide = swiper.slides[i];
+                            var progress = slide.progress;
+                            var translate = progress*swiper.height;  
+                            var opacity = 1 - Math.min(Math.abs(progress),1);
+                            slide.style.opacity = opacity;
+                            swiper.setTransform(slide,'translate3d(0, '+translate+'px,0)');
+                        }
+                    },
+
+                    onSlideChangeEnd: function(swiper){
+                        var index = swiper.activeIndex + 1;
+                        // $('.animated').removeAttr('style');
+                        
+                        $('.page' + index).addClass('viewed');
+                        if (index == 1) {
+                        } if (index >= 2 && index <=7 ) {
+                            $('.page' + index + ' .content-text').velocity({
+                                height: 114
+                            }, { duration: 1500 });
+                            $('.page' + index + ' .toy').velocity('transition.bounceUpIn', { stagger: 100 });
+                        } else if (index == 8) {
+                            $('.summary-text').velocity({
+                                height: 160
+                            }, { duration: 1500 });
+                        } else if (index == 9) {
+                            $('.btnswrapper a').velocity('transition.slideUpBigIn', { stagger: 100 });
+                        }
+                    },
+                    onTouchStart:function(swiper){
+                        for (var i = 0; i < swiper.slides.length; i++){
+                            swiper.setTransition(swiper.slides[i], 0);
+                        }
+                        if (fadeInTimer) {
+                            window.clearTimeout(fadeInTimer);
+                        }
+                        $('.pointer-arrow').velocity('fadeOut');
+                    },
+                    onTouchEnd: function(swiper) {
+                        if (swiper.activeIndex != swiper.slides.length - 1) {
+                            fadeInTimer = window.setTimeout(function(){
+                                $('.pointer-arrow').velocity('fadeIn');
+                            }, 1500);
+                        }
+                    },
+                    onSetWrapperTransition: function(swiper, speed) {
+                        for (var i = 0; i < swiper.slides.length; i++){
+                            swiper.setTransition(swiper.slides[i], speed);
+                        }
+                    }
+                });
+                // Set Z-Indexes
+                for (var i = 0; i < mySwiper.slides.length; i++){
+                    mySwiper.slides[i].style.zIndex = i;
+                }
+            }); // end of dom
+        </script>
+    </body>
+</html>
