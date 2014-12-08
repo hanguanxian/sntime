@@ -176,6 +176,14 @@
                 background: transparent url('web/images/getorskip.jpg') no-repeat top center;
                 background-size: cover;
             }
+            .end-page .end-page-wrapper { 
+                position: absolute; top: 200px; text-align: center; width: 100%; 
+            }
+            .end-page .end-text {
+                display: inline-block; width: 320px; height: 0px;
+                background: transparent url('web/images/orskipcontent.png') no-repeat top center;
+                background-size: 320px 165px;
+            }
             .end-page .btnswrapper { position: absolute; width: 100%; top: 360px; text-align: center; }
             .btnget { display: none; width: 253px; }
             .btnskip { display: none; width: 117px; }
@@ -202,6 +210,7 @@
                 .toys-wrapper { top: 350px; }
                 .summary-page .summary-text-wrapper { top: 152px; }
                 .end-page { background-position: center -30px; }
+                .end-page .end-page-wrapper { top: 170px; }
                 .end-page .btnswrapper { top: 300px; }
             }
         </style>
@@ -263,6 +272,9 @@
                     </div>
                     
                     <div class='swiper-slide end-page'>
+                        <div class='end-page-wrapper'>
+                            <div class='end-text'></div>
+                        </div>
                         <div class='btnswrapper'>
                             <a class='btnget' href='getbox.php'><img src='web/images/form/btnget.png' /></a><br/>
                             <a class='btnskip' href='participate.php'><img src='web/images/form/btnskip.png' /></a>
@@ -331,6 +343,9 @@
                                 height: 160
                             }, { duration: 1500 });
                         } else if (index == 9) {
+                            $('.end-text').velocity({
+                                height: 165
+                            }, { duration: 1500 });
                             $('.btnswrapper a').velocity('transition.slideUpBigIn', { stagger: 100 });
                         }
                     },
